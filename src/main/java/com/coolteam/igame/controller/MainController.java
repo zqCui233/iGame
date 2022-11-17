@@ -1,4 +1,4 @@
-package com.coolteam.igame;
+package com.coolteam.igame.controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;

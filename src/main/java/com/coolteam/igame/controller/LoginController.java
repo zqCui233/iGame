@@ -1,4 +1,4 @@
-package com.coolteam.igame;
+package com.coolteam.igame.controller;
 
 
 import java.net.URL;
@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
+import com.coolteam.igame.SceneAlter;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
