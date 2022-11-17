@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+
+
+<AnchorPane prefHeight="235.0" prefWidth="368.0" >
+   <children>
+      <ImageView layoutX="7.0" layoutY="7.0">
+         <Image url="@../../../images/usr.png" />
+         <fitWidth>30</fitWidth>
+         <fitHeight>30</fitHeight>
+         <clip>
+            <Circle centerX="15" centerY="15" fill="aqua">
+               <radius>15</radius>
+            </Circle>
+         </clip>
+      </ImageView>
+      <ImageView fitHeight="30" fitWidth="30" layoutX="7.0" layoutY="197.0">
+         <clip>
+            <Circle centerX="15" centerY="15" fill="aqua" radius="15" />
+         </clip>
+         <image>
+            <Image url="@../../../images/help.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30" fitWidth="30" layoutX="324.0" layoutY="197.0">
+         <clip>
+            <Circle centerX="15" centerY="15" fill="aqua" radius="15" />
+         </clip>
+         <image>
+            <Image url="@../../../images/volume.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
