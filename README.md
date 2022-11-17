@@ -1,10 +1,10 @@
 # iGame
 This is the final project of CSYE6200 by Cool Team
 
-## TO-DO
-- clone this repo and open with idea
-- see if you can run this application
-- add yourself below
+## TODO
+- test db tools and dao
+- complete register and login both GUI and logic
+- design a way to calculate the score of your game and 
 
 ## Team members
 - Zhiqing Cui([@zqCui233](https://github.com/zqCui233))
