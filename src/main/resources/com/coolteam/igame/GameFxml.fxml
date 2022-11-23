@@ -11,7 +11,8 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coolteam.igame.Game">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#402c25" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-        <Ellipse fill="#007c63" layoutX="300.0" layoutY="113.0" radiusX="336.0" radiusY="266.0" stroke="#5e2121" strokeType="INSIDE" />
+        <Ellipse fill="#281c1a" layoutX="300.0" layoutY="155.0" radiusX="349.0" radiusY="256.0" stroke="#3c3734" strokeType="INSIDE" />
+        <Ellipse fill="#007c63" layoutX="300.0" layoutY="113.0" radiusX="336.0" radiusY="266.0" stroke="#4d9e83" strokeType="INSIDE" />
         <Button layoutX="161.0" layoutY="222.0" mnemonicParsing="false" onAction="#hit" prefHeight="25.0" prefWidth="70.0" text="HIT" />
         <Button layoutX="370.0" layoutY="222.0" mnemonicParsing="false" onAction="#stand" prefHeight="26.0" prefWidth="70.0" text="STAND" />
         <ImageView fx:id="p1c1" fitHeight="99.0" fitWidth="70.0" layoutX="231.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" />

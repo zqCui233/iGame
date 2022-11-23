@@ -16,6 +16,8 @@ import java.util.Random;
 public class Game extends Application {
     @FXML
     private static boolean keepturn = true;
+    @FXML
+    private static boolean gamekeep = true;
     private static int playerCard = 0;
     private static int player2Card = 0;
     private static int testvalue; //对手逻辑
@@ -81,9 +83,10 @@ public class Game extends Application {
     private ImageView p2c5 = new ImageView();
     @FXML
     private ImageView p2c6 = new ImageView();
-    ImageView[] p1card = {p1c1,p1c2,p1c3,p1c4,p1c5,p1c6};
-    ImageView[] p2card = {p2c1,p2c2,p2c3,p2c4,p2c5,p2c6};
-
+    //牌号，防止重复
+    private static ArrayList<Integer> checkRepeat = new ArrayList<Integer>();
+    //结束p2翻牌
+    private static ArrayList<Integer> flipp2 = new ArrayList<Integer>();
 
     public static void main(String[] args) {
         launch(args);
@@ -106,16 +109,23 @@ public class Game extends Application {
         testvalue = r.nextInt(4)+14; //对手逻辑
 
         //第一张牌
-        int num = r.nextInt(10)+1;
+        int rnum1 = r.nextInt(26)+1;
+        int num = getNum(rnum1); //得到点数
         player.add(num);
-        playerCard+=1;
-        int num2 = r.nextInt(10)+1;
+        checkRepeat.add(rnum1);
+        playerCard = 1;
+        //敌人需要防止重复
+        int rnum2 = getNoRep(checkRepeat);
+        int num2 = getNum(rnum2);
         player2.add(num2);
-        player2Card+=1;
+        checkRepeat.add(rnum2);
+        flipp2.add(rnum2);
+        player2Card = 1;
+
         //为啥不显示啊！！
         setScore();
-        p1c1.setImage(cardset.get(num));
-        p2c1.setImage(cardset.get(num2));
+        p1c1.setImage(cardset.get(rnum1));
+        p2c1.setImage(cardset.get(rnum2));
 
         Scene sc = new Scene(fx.load());
         primaryStage.setTitle("Black Jack");
@@ -156,83 +166,128 @@ public class Game extends Application {
             }
         }
     }
+
     public void setScore(){
         score.setText("P2's score:"+sumArr(player2)
                 +"\nYour score:"+sumArr(player));
     }
+
+    public static int getNoRep(ArrayList check){
+        Random r = new Random();
+        int rnum = r.nextInt(26)+1;
+        while (check.contains(rnum)) {
+            rnum = r.nextInt(26)+1; //找出没用过的牌
+        }
+        return rnum;
+    }
+
+    //得到点数
+    public static int getNum(int nums){
+        //点数（大于10则算作10）
+        int num=(nums-1)%13+1;
+        if(num>10){
+            num=10;
+        }
+        return num;
+    }
+
     @FXML
     public void hit() {
         Random r = new Random();
-        //玩家卡
-        if(keepturn){
-            int num = r.nextInt(10)+1;
-            while(player.contains(num)) {
-                num = r.nextInt(10) + 1; //找出没用过的数
+        // 测试是否已经结束
+        if(gamekeep) {
+            //玩家卡
+            if (keepturn) {
+                //防止重复
+                int rnum1 = getNoRep(checkRepeat);
+                int num = getNum(rnum1); //得到点数
+                player.add(num);
+                checkRepeat.add(rnum1);
+                playerCard += 1;
+                score.setText("P2's score: ?"
+                        + "\nYour score:" + sumArr(player)); //更新分数标签
+                whichCard(playerCard, 1, rnum1); //更新卡片
+            } else {
+                warnLabel.setText("Already Stand."); //虽然实际测试好像用不到但是总之先加上吧
             }
-            player.add(num);
-            System.out.println("Your cards: "+player);
-            playerCard+=1;
-            score.setText("P2's score: ?"
-                    +"\nYour score:"+sumArr(player)); //更新分数标签
-            whichCard(playerCard,1,num); //更新卡片
+
+            //敌人卡
+            if (sumArr(player2) < testvalue) {
+                int rnum2 = getNoRep(checkRepeat);
+                int num2 = getNum(rnum2);
+                player2.add(num2);
+                checkRepeat.add(rnum2);
+                flipp2.add(rnum2);
+                player2Card += 1;
+                whichCard(player2Card, 2, 0); //更新卡片（背面）
+            }
+
+            //是否有人超过21点
+            if(sumArr(player2)>21) {
+                warnLabel.setText("P2 Explode, You Win!");
+                flipcard();
+                setScore();
+                gamekeep = false;
+            }else if(sumArr(player)>21) {
+                warnLabel.setText("You Explode, You Lose!");
+                flipcard();
+                setScore();
+                gamekeep = false;
+            }
         }else{
-            warnLabel.setText("Already Stand.");
-        }
-
-        //敌人卡
-        if(sumArr(player2)<testvalue){
-            int num2 = r.nextInt(10)+1;
-            while(player2.contains(num2)) {
-                num2 = r.nextInt(10) + 1;
-            }
-            player2.add(num2);
-            System.out.println("P2's cards: "+player2);
-            player2Card+=1;
-            whichCard(player2Card,2,0); //更新卡片
-        }
-
-        //是否有人超过21点
-        if(sumArr(player2)>21) {
-            warnLabel.setText("P2 Explode, You Win!");
-            setScore();
-        }else if(sumArr(player)>21){
-            warnLabel.setText("You Explode, You Lose!");
-            setScore();
+            warnLabel.setText("Already Gameover");
         }
     }
 
     @FXML
     public void stand(){
-        //玩家停止抽卡
-        keepturn = false;
-        Random r = new Random();
-        //敌人继续抽卡
-        while(sumArr(player2)<testvalue){
-            int num2 = r.nextInt(10) + 1;;
-            while(player2.contains(num2)) {
-                num2 = r.nextInt(10) + 1;
+        //是否已经结束
+        if(gamekeep) {
+            //玩家停止抽卡
+            keepturn = false;
+            Random r = new Random();
+            //敌人继续抽卡
+            while (sumArr(player2) < testvalue) {
+                int rnum2 = getNoRep(checkRepeat);
+                int num2 = getNum(rnum2);
+                player2.add(num2);
+                checkRepeat.add(rnum2);
+                flipp2.add(rnum2);
+                player2Card += 1;
+                whichCard(player2Card, 2, 0); //更新卡片（背面）
             }
-            player2.add(num2);
-            System.out.println("P2's cards: "+player2);
-            player2Card+=1;
-            whichCard(player2Card,2,0); //更新卡片
-        }
 
-        //结算输赢
-        if(sumArr(player2)>21) {
-            warnLabel.setText("P2 Explode, You Win!");
-            setScore();
-        }else if(sumArr(player)==sumArr(player2)){
-            warnLabel.setText("Same Score!");
-            setScore();
-        }else if(sumArr(player)>sumArr(player2)){
-            warnLabel.setText("You Win!");
-            setScore();
+            //结算输赢
+            if (sumArr(player2) > 21) {
+                warnLabel.setText("P2 Explode, You Win!");
+                flipcard();
+                setScore();
+            } else if (sumArr(player) == sumArr(player2)) {
+                warnLabel.setText("Same Score!");
+                flipcard();
+                setScore();
+            } else if (sumArr(player) > sumArr(player2)) {
+                warnLabel.setText("You Win!");
+                flipcard();
+                setScore();
+            } else {
+                warnLabel.setText("You Lose!");
+                flipcard();
+                setScore();
+            }
+            gamekeep = false;
         }else{
-            warnLabel.setText("You Lose!");
-            setScore();
+            warnLabel.setText("Already Gameover");
         }
+    }
 
+    //结束后把敌人的卡翻过来(配合花色防重复）
+    public void flipcard(){
+        int index = 1;
+        for(int j:flipp2){
+            whichCard(index,2,j);
+            index++;
+        }
     }
 
     @FXML
@@ -240,26 +295,34 @@ public class Game extends Application {
         Random r = new Random();
         testvalue = r.nextInt(4)+14;
         keepturn = true;
+        gamekeep = true;
         warnLabel.setText("");
         score.setText("");
         player = new ArrayList<Integer>();
         player2 = new ArrayList<Integer>();
+        checkRepeat = new ArrayList<Integer>();
+        flipp2 = new ArrayList<Integer>();
         //图片
         p1c1.setImage(null); p1c2.setImage(null); p1c3.setImage(null); p1c4.setImage(null);
         p1c5.setImage(null); p1c6.setImage(null); p2c1.setImage(null); p2c2.setImage(null);
         p2c3.setImage(null); p2c4.setImage(null); p2c5.setImage(null); p2c6.setImage(null);
 
         //第一张牌
-        int num = r.nextInt(10)+1;
+        int rnum1 = r.nextInt(26)+1;
+        int num = getNum(rnum1); //得到点数
         player.add(num);
+        checkRepeat.add(rnum1);
         playerCard=1;
-        int num2 = r.nextInt(10)+1;
+        int rnum2 = getNoRep(checkRepeat);
+        int num2 = getNum(rnum2);
         player2.add(num2);
+        checkRepeat.add(rnum2);
+        flipp2.add(rnum2);
         player2Card=1;
         setScore();
         //放图片
-        p1c1.setImage(cardset.get(num));
-        p2c1.setImage(cardset.get(num2));
+        p1c1.setImage(cardset.get(rnum1));
+        p2c1.setImage(cardset.get(rnum2));
     }
 
     public static int sumArr(ArrayList<Integer> arr) {
