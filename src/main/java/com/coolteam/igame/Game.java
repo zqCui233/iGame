@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,6 +15,9 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class Game extends Application {
+    public static Stage stage; //用来让改变场景的method可以用到
+    @FXML
+    private Button go2 = new Button(); //改变场景
     @FXML
     private static boolean keepturn = true; //是否stand，感觉没啥用，总之先用着
     @FXML
@@ -95,7 +99,10 @@ public class Game extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        this.stage = primaryStage;
         FXMLLoader fx = new FXMLLoader(getClass().getResource("GameFxml.fxml"));
+
+
         //图片hashmap，点数对应图片
         cardset.put(0,back);
         cardset.put(1,la); cardset.put(2,l2); cardset.put(3,l3); cardset.put(4,l4);
@@ -110,10 +117,21 @@ public class Game extends Application {
         gamekeep = false;
 
         Scene sc = new Scene(fx.load());
+
+
         primaryStage.setTitle("Black Jack");
         primaryStage.setScene(sc);
         primaryStage.show();
 
+    }
+
+    //改变场景
+    @FXML
+    public void goG2() throws Exception{
+        FXMLLoader fx2 = new FXMLLoader(getClass().getResource("G2.fxml"));
+        Game2 g = new Game2();
+        g.start(this.stage); //不然stage会是null，虽然好像也可以用initializable但是我偷工减料了（
+        this.stage.setScene(new Scene(fx2.load()));
     }
 
     //确定哪个位置放什么牌

@@ -17,10 +17,10 @@
         <Button layoutX="370.0" layoutY="222.0" mnemonicParsing="false" onAction="#stand" prefHeight="26.0" prefWidth="70.0" text="STAND" />
         <ImageView fx:id="p1c1" fitHeight="99.0" fitWidth="70.0" layoutX="231.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="p1c2" fitHeight="98.0" fitWidth="70.0" layoutX="249.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="p1c3" fitHeight="119.0" fitWidth="70.0" layoutX="266.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="p1c3" fitHeight="99.0" fitWidth="70.0" layoutX="266.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="p1c4" fitHeight="98.0" fitWidth="70.0" layoutX="284.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="p1c5" fitHeight="98.0" fitWidth="70.0" layoutX="301.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="p1c6" fitHeight="98.0" fitWidth="70.0" layoutX="321.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="p1c5" fitHeight="98.0" fitWidth="67.0" layoutX="301.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="p1c6" fitHeight="98.0" fitWidth="67.0" layoutX="321.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" />
         <Label fx:id="warnLabel" alignment="CENTER" layoutX="167.0" layoutY="176.0" prefHeight="36.0" prefWidth="253.0" text="Please Start New Turn">
             <font>
                 <Font size="20.0" />
@@ -36,5 +36,6 @@
         <ImageView fx:id="p2c4" fitHeight="99.0" fitWidth="70.0" layoutX="286.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="p2c5" fitHeight="98.0" fitWidth="67.0" layoutX="303.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="p2c6" fitHeight="99.0" fitWidth="70.0" layoutX="319.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="go2" layoutX="22.0" layoutY="354.0" mnemonicParsing="false" onAction="#goG2" text="Change Mode" />
     </children>
 </Pane>
