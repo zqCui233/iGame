@@ -102,7 +102,6 @@ public class Game extends Application {
         this.stage = primaryStage;
         FXMLLoader fx = new FXMLLoader(getClass().getResource("GameFxml.fxml"));
 
-
         //图片hashmap，点数对应图片
         cardset.put(0,back);
         cardset.put(1,la); cardset.put(2,l2); cardset.put(3,l3); cardset.put(4,l4);
@@ -118,20 +117,16 @@ public class Game extends Application {
 
         Scene sc = new Scene(fx.load());
 
-
         primaryStage.setTitle("Black Jack");
         primaryStage.setScene(sc);
         primaryStage.show();
-
     }
 
     //改变场景
     @FXML
     public void goG2() throws Exception{
-        FXMLLoader fx2 = new FXMLLoader(getClass().getResource("G2.fxml"));
         Game2 g = new Game2();
-        g.start(this.stage); //不然stage会是null，虽然好像也可以用initializable但是我偷工减料了（
-        this.stage.setScene(new Scene(fx2.load()));
+        g.start(stage); //不然stage会是null，虽然好像也可以用initializable但是我偷工减料了（
     }
 
     //确定哪个位置放什么牌

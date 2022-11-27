@@ -25,7 +25,7 @@
             <font>
                 <Font size="20.0" />
             </font></Label>
-        <Button layoutX="244.0" layoutY="14.0" mnemonicParsing="false" onAction="#restart" text="Start New Turn" />
+        <Button layoutX="487.0" layoutY="354.0" mnemonicParsing="false" onAction="#restart" text="Start New Turn" />
         <Label fx:id="score" layoutX="472.0" layoutY="155.0" prefHeight="78.0" prefWidth="114.0">
             <font>
                 <Font size="15.0" />
@@ -36,6 +36,6 @@
         <ImageView fx:id="p2c4" fitHeight="99.0" fitWidth="70.0" layoutX="286.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="p2c5" fitHeight="98.0" fitWidth="67.0" layoutX="303.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="p2c6" fitHeight="99.0" fitWidth="70.0" layoutX="319.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="go2" layoutX="22.0" layoutY="354.0" mnemonicParsing="false" onAction="#goG2" text="Change Mode" />
+      <Button fx:id="go2" layoutX="14.0" layoutY="354.0" mnemonicParsing="false" onAction="#goG2" text="Change Mode" />
     </children>
 </Pane>
