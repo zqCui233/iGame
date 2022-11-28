@@ -122,7 +122,7 @@ public class Game extends Application {
 
         Scene sc = new Scene(fx.load());
 
-        primaryStage.setTitle("Black Jack Mode 3");
+        primaryStage.setTitle("Black Jack Mode 1");
         primaryStage.setScene(sc);
         primaryStage.show();
     }

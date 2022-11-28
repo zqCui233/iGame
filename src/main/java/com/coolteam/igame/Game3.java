@@ -143,7 +143,7 @@ public class Game3 extends Application {
         gamekeep = false;
 
         Scene sc = new Scene(fx.load());
-        primaryStage.setTitle("Black Jack");
+        primaryStage.setTitle("Black Jack Mode 3");
         primaryStage.setScene(sc);
         primaryStage.show();
 
