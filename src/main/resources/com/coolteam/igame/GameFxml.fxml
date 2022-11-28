@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coolteam.igame.Game">
+<Pane fx:id="rootLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coolteam.igame.controller.Mode1Controller">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#402c25" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
         <Ellipse fill="#281c1a" layoutX="300.0" layoutY="155.0" radiusX="349.0" radiusY="256.0" stroke="#3c3734" strokeType="INSIDE" />
@@ -39,6 +39,6 @@
         <Button fx:id="go2" layoutX="20.0" layoutY="353.0" mnemonicParsing="false" onAction="#goG2" text="Change Mode" />
         <Button layoutX="20.0" layoutY="312.0" mnemonicParsing="false" onAction="#clickHelp" prefHeight="26.0" prefWidth="52.0" text="Help" />
         <ImageView fx:id="help1" disable="true" fitHeight="265.0" fitWidth="377.0" layoutX="113.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="Back" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#gotoChooseMode" text="Back" />
     </children>
 </Pane>
