@@ -118,18 +118,18 @@ public class Mode2 {
     }
 
     //改变场景
-    @FXML
-    public void goG3() throws Exception{
-        Game3 g = new Game3();
-        stage.close();
-        g.start(stage); //不然stage会是null，虽然好像也可以用initializable但是我偷工减料了（
-    }
-    @FXML
-    public void goBack() throws Exception{
-        ChooseMode g = new ChooseMode();
-        stage.close();
-        g.start(stage);
-    }
+//    @FXML
+//    public void goG3() throws Exception{
+//        Game3 g = new Game3();
+//        stage.close();
+//        g.start(stage); //不然stage会是null，虽然好像也可以用initializable但是我偷工减料了（
+//    }
+//    @FXML
+//    public void goBack() throws Exception{
+//        ChooseMode g = new ChooseMode();
+//        stage.close();
+//        g.start(stage);
+//    }
 
     //确定哪个位置放什么牌，index从1开始
     public void whichCard(int index, int player, int num) {
