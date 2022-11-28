@@ -222,8 +222,13 @@ public class Game3 extends Application {
     }
 
     //得到点数
-    public static int getNum(int nums) {
-        return (nums - 1) % 13 + 1;//J、K、L分别对应11、12、13
+    public static int getNum(int nums){
+        //点数（大于10则算作10）
+        int num=(nums-1)%13+1;
+        if(num>10){
+            num=10;
+        }
+        return num;
     }
 
     @FXML
