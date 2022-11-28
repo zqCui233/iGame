@@ -171,7 +171,7 @@ public class Game3 extends Application {
     public void goBack() throws Exception{
         ChooseMode g = new ChooseMode();
         stage.close();
-        g.start(stage); //不然stage会是null，虽然好像也可以用initializable但是我偷工减料了（
+        g.start(stage);
     }
 
     //确定哪个位置放什么牌
