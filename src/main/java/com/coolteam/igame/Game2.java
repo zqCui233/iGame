@@ -1,39 +1,31 @@
 package com.coolteam.igame;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.ObservableSet;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
-import java.util.ResourceBundle;
 
-public class Game3 extends Application {
+public class Game2 extends Application {
     public static Stage stage; //用来让改变场景的method可以用到
     @FXML
     private static boolean gamekeep = false; //是否结束游戏
     private static int playerCard = 0; //玩家目前卡片数量，用来确定卡片图片放在第几个位置
     private static int player2Card = 0; //敌人卡片数量
-    private static int cheatTimes = 2;
     @FXML
     private Label warnLabel = new Label(); //用来显示提示语
     @FXML
     private Label score = new Label(); //显示分数
-    private static ArrayList<Integer> player = new ArrayList<Integer>(); //玩家卡片数值
-    private static ArrayList<Integer> player2 = new ArrayList<Integer>(); //对手卡片数值
+    private static ArrayList<Integer> player = new ArrayList<Integer>(); //玩家随机点数
+    private static ArrayList<Integer> player2 = new ArrayList<Integer>(); //对手随机点数
     //图片们
     private final Image la = new Image(getClass().getResourceAsStream("/images/la.png"));
     private final Image l2 = new Image(getClass().getResourceAsStream("/images/l2.png"));
@@ -63,8 +55,7 @@ public class Game3 extends Application {
     private final Image pk = new Image(getClass().getResourceAsStream("/images/pk.png"));
     private final Image back = new Image(getClass().getResourceAsStream("/images/back.png"));
     //规则
-    private final Image rule3 = new Image(getClass().getResourceAsStream("/images/rule3.png"));
-
+    private final Image rule2 = new Image(getClass().getResourceAsStream("/images/rule2.png"));
     // 用来对应随机点数和图片
     private static HashMap<Integer, Image> cardset = new HashMap<Integer, Image>();
 
@@ -94,76 +85,46 @@ public class Game3 extends Application {
     @FXML
     private ImageView p2c6 = new ImageView();
     @FXML
-    private ImageView help3 = new ImageView(); //规则
+    private ImageView help2 = new ImageView(); //规则
     private boolean helpdisplay = false; //规则页面是否显示
     //记录牌号，防止重复
     private static ArrayList<Integer> checkRepeat = new ArrayList<Integer>();
     @FXML
-    private Button go1 = new Button(); //改变场景
+    private Button go3 = new Button(); //改变场景
 
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws Exception{
         this.stage = primaryStage;
-        FXMLLoader fx = new FXMLLoader(getClass().getResource("G3.fxml"));
 
+        FXMLLoader fx2 = new FXMLLoader(getClass().getResource("G2.fxml"));
         //图片hashmap，点数对应图片
-        cardset.put(0, back);
-        cardset.put(1, la);
-        cardset.put(2, l2);
-        cardset.put(3, l3);
-        cardset.put(4, l4);
-        cardset.put(5, l5);
-        cardset.put(6, l6);
-        cardset.put(7, l7);
-        cardset.put(8, l8);
-        cardset.put(9, l9);
-        cardset.put(10, l10);
-        cardset.put(11, lj);
-        cardset.put(12, lq);
-        cardset.put(13, lk);
-        cardset.put(14, pa);
-        cardset.put(15, p2);
-        cardset.put(16, p3);
-        cardset.put(17, p4);
-        cardset.put(18, p5);
-        cardset.put(19, p6);
-        cardset.put(20, p7);
-        cardset.put(21, p8);
-        cardset.put(22, p9);
-        cardset.put(23, p10);
-        cardset.put(24, pj);
-        cardset.put(25, pq);
-        cardset.put(26, pk);
+        cardset.put(0,back);
+        cardset.put(1,la); cardset.put(2,l2); cardset.put(3,l3); cardset.put(4,l4);
+        cardset.put(5,l5); cardset.put(6,l6); cardset.put(7,l7); cardset.put(8,l8);
+        cardset.put(9,l9); cardset.put(10,l10); cardset.put(11,lj); cardset.put(12,lq);
+        cardset.put(13,lk); cardset.put(14,pa); cardset.put(15,p2); cardset.put(16,p3);
+        cardset.put(17,p4); cardset.put(18,p5); cardset.put(19,p6); cardset.put(20,p7);
+        cardset.put(21,p8); cardset.put(22,p9); cardset.put(23,p10); cardset.put(24,pj);
+        cardset.put(25,pq); cardset.put(26,pk);
 
         // 刚开局强制要求点new turn，因为第一局就开始游戏的话有bug，我不会解决
         gamekeep = false;
 
-        Scene sc = new Scene(fx.load());
-        primaryStage.setTitle("Black Jack Mode 3");
-        primaryStage.setScene(sc);
+        Scene sc2 = new Scene(fx2.load());
+
+        primaryStage.setTitle("Black Jack Mode 2");
+        primaryStage.setScene(sc2);
         primaryStage.show();
-
-    }
-
-    //显示和取消help
-    public void clickHelp(){
-        if(helpdisplay){
-            help3.setImage(null);
-            helpdisplay=false;
-        }else{
-            help3.setImage(rule3);
-            helpdisplay=true;
-        }
     }
 
     //改变场景
     @FXML
-    public void goG1() throws Exception{
-        Game g = new Game();
+    public void goG3() throws Exception{
+        Game3 g = new Game3();
         stage.close();
         g.start(stage); //不然stage会是null，虽然好像也可以用initializable但是我偷工减料了（
     }
@@ -174,7 +135,7 @@ public class Game3 extends Application {
         g.start(stage); //不然stage会是null，虽然好像也可以用initializable但是我偷工减料了（
     }
 
-    //确定哪个位置放什么牌
+    //确定哪个位置放什么牌，index从1开始
     public void whichCard(int index, int player, int num) {
         if (player == 1) {
             if (index == 1) {
@@ -212,7 +173,7 @@ public class Game3 extends Application {
         score.setText("P2's score:" + finalSumArr(player2)
                 + "\nYour score:" + finalSumArr(player));
     }
-
+    // score显示分数，用在平时
     public void setScore() {
         score.setText("P2's score: ? + " + sumArr(player2)
                 + "\nYour score: ? + " + sumArr(player));
@@ -227,17 +188,6 @@ public class Game3 extends Application {
         }
         return rnum;
     }
-
-    //得到点数
-    public static int getNum(int nums){
-        //点数（大于10则算作10）
-        int num=(nums-1)%13+1;
-        if(num>10){
-            num=10;
-        }
-        return num;
-    }
-
     @FXML
     public void hit() {
         Random r = new Random();
@@ -245,7 +195,6 @@ public class Game3 extends Application {
         if (gamekeep) {
             //防止重复
             int rnum1 = getNoRep(checkRepeat);
-//            int num = getNum(rnum1); //得到点数
             player.add(rnum1);
             checkRepeat.add(rnum1);
             playerCard += 1;
@@ -256,10 +205,8 @@ public class Game3 extends Application {
                 setFinalScore();
                 gamekeep = false;
             } else {//如果玩家没超过21则对手摸牌
-                int rnum2;
                 if (keepHitting()) {
-                    rnum2 = getNoRep(checkRepeat);
-//                    int num2 = getNum(rnum2);
+                    int rnum2 = getNoRep(checkRepeat);
                     player2.add(rnum2);
                     checkRepeat.add(rnum2);
                     player2Card += 1;
@@ -269,20 +216,6 @@ public class Game3 extends Application {
                         flipcard();
                         setFinalScore();
                         gamekeep = false;
-                    }
-                } else if (cheatTimes > 0) {//在这里作弊
-                    rnum2 = cheat();
-                    if (rnum2 != 0) {//有机会作弊
-                        player2.add(rnum2);
-                        checkRepeat.add(rnum2);
-                        player2Card += 1;
-                        whichCard(player2Card, 2, rnum2); //更新卡片
-                        if (finalSumArr(player2) > 21) {//检查对手是否超过21
-                            warnLabel.setText("P2 Explode, You Win!");
-                            flipcard();
-                            setFinalScore();
-                            gamekeep = false;
-                        }
                     }
                 }
                 if (gamekeep) {
@@ -307,15 +240,6 @@ public class Game3 extends Application {
                 checkRepeat.add(rnum2);
                 player2Card += 1;
                 whichCard(player2Card, 2, rnum2);
-            }
-            if (cheatTimes > 0) {//在这里作弊
-                int rnum2 = cheat();
-                if (rnum2 != 0) {//有机会作弊
-                    player2.add(rnum2);
-                    checkRepeat.add(rnum2);
-                    player2Card += 1;
-                    whichCard(player2Card, 2, rnum2); //更新卡片
-                }
             }
 
             //结算输赢
@@ -342,44 +266,26 @@ public class Game3 extends Application {
         }
     }
 
-    //结束后把双方的第一张牌翻过来
-    public void flipcard() {
-        whichCard(1, 1, getNum(player.get(0)));//将双方第一张牌亮出
-        whichCard(1, 2, getNum(player2.get(0)));
-    }
-
     //朴实无华的把所有数据全初始化
     @FXML
     public void restart() {
         Random r = new Random();
         gamekeep = true;
-        cheatTimes = 2;
         warnLabel.setText("");
         score.setText("P2's score: ?\nYour score: ?"); //更新分数标签
         player = new ArrayList<Integer>();
         player2 = new ArrayList<Integer>();
         checkRepeat = new ArrayList<Integer>();
         //图片
-        p1c1.setImage(null);
-        p1c2.setImage(null);
-        p1c3.setImage(null);
-        p1c4.setImage(null);
-        p1c5.setImage(null);
-        p1c6.setImage(null);
-        p2c1.setImage(null);
-        p2c2.setImage(null);
-        p2c3.setImage(null);
-        p2c4.setImage(null);
-        p2c5.setImage(null);
-        p2c6.setImage(null);
+        p1c1.setImage(null); p1c2.setImage(null); p1c3.setImage(null); p1c4.setImage(null);
+        p1c5.setImage(null); p1c6.setImage(null); p2c1.setImage(null); p2c2.setImage(null);
+        p2c3.setImage(null); p2c4.setImage(null); p2c5.setImage(null); p2c6.setImage(null);
         //第一张牌
         int rnum1 = r.nextInt(26) + 1;
-//        int num = getNum(rnum1); //得到点数
         player.add(rnum1);
         checkRepeat.add(rnum1);
         playerCard = 1;
         int rnum2 = getNoRep(checkRepeat);
-//        int num2 = getNum(rnum2);
         player2.add(rnum2);
         checkRepeat.add(rnum2);
         player2Card = 1;
@@ -388,6 +294,34 @@ public class Game3 extends Application {
         p2c1.setImage(cardset.get(0));
     }
 
+    //结束后把双方的第一张牌翻过来
+    public void flipcard() {
+        whichCard(1, 1, getNum(player.get(0)));//将双方第一张牌亮出
+        whichCard(1, 2, getNum(player2.get(0)));
+    }
+
+    //显示和取消help
+    public void clickHelp(){
+        if(helpdisplay){
+            help2.setImage(null);
+            helpdisplay=false;
+        }else{
+            help2.setImage(rule2);
+            helpdisplay=true;
+        }
+    }
+
+    //得到点数
+    //得到点数
+    public static int getNum(int nums){
+        //点数（大于10则算作10）
+        int num=(nums-1)%13+1;
+        if(num>10){
+            num=10;
+        }
+        return num;
+    }
+    //使用随机点数得到第一张之外的点数，用于游戏结束前显示分数
     public static int sumArr(ArrayList<Integer> arr) {
         int sum = 0;
         for (int i = 1; i < arr.size(); i++) {
@@ -395,7 +329,7 @@ public class Game3 extends Application {
         }
         return sum;
     }
-
+    //使用随机点数和method计算最终得分
     public static int finalSumArr(ArrayList<Integer> arr) {
         int sum = 0;
         for (int x : arr) {
@@ -415,26 +349,12 @@ public class Game3 extends Application {
                 }
             }
         }
-        return (double) successCount / (26 - playerCard - player2Card + 2) / (26 - playerCard - player2Card + 2 - 1) * 2 * 1 > 0.75;
-//        return sumArr(player2) < 16;
+        return (double) successCount / (26 - playerCard - player2Card + 2) / (26 - playerCard - player2Card + 2 - 1) * 2 * 1 > 0.6;
     }
-
-    public static int cheat() {
-        if (cheatTimes % 2 == 0) {
-            for (int i = 26; i >= 1; i--) {
-                if (!player.contains(i) && !player2.contains(i) && finalSumArr(player2) + getNum(i) < 21) {
-                    cheatTimes--;
-                    return i;
-                }
-            }
-        } else {
-            for (int i = 1; i <= 26; i++) {
-                if (!player.contains(i) && !player2.contains(i) && finalSumArr(player2) + getNum(i) < 21) {
-                    cheatTimes--;
-                    return i;
-                }
-            }
-        }
-        return 0;
+    public static double factorial(double number) {
+        if (number <= 1)
+            return 1;
+        else
+            return number * factorial(number - 1);
     }
 }
