@@ -9,10 +9,11 @@
 <AnchorPane fx:id="login" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coolteam.igame.controller.LoginController">
     <children>
         <BorderPane prefHeight="20.0" prefWidth="368.0" />
-        <Label layoutX="73.0" layoutY="75.0" text="username: " />
-        <Label layoutX="77.0" layoutY="125.0" text="password: " />
-        <TextField fx:id="login_username" layoutX="147.0" layoutY="70.0" promptText="username is 'yanglei'" />
-        <TextField fx:id="login_password" layoutX="147.0" layoutY="120.0" promptText="password is '12345678'" />
-        <Button fx:id="login_button" layoutX="160.0" layoutY="178.0" mnemonicParsing="false" onAction="#loginButtonClick" text="log in" />
+        <Label layoutX="73.0" layoutY="73.0" text="username: " />
+        <Label layoutX="73.0" layoutY="122.0" text="password: " />
+        <TextField fx:id="login_username" layoutX="147.0" layoutY="69.0" promptText="username is 'yanglei'" />
+        <TextField fx:id="login_password" layoutX="146.0" layoutY="118.0" promptText="password is '12345678'" />
+        <Button fx:id="login_button" layoutX="216.0" layoutY="164.0" mnemonicParsing="false" onAction="#loginButtonClick" prefHeight="26.0" prefWidth="59.0" text="log in" />
+      <Button fx:id="register_button" layoutX="88.0" layoutY="164.0" mnemonicParsing="false" onAction="#loginButtonClick" text="Sign up" />
     </children>
 </AnchorPane>

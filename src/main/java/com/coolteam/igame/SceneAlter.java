@@ -67,7 +67,7 @@ public class SceneAlter extends Application {
             stage.sizeToScene();
         } catch (Exception e) {
             logger.log(Level.SEVERE, "loading error！");
-            //popUps.loadingError();
+            //PopUpsController.loadingError();
         } finally {
             in.close();
         }
