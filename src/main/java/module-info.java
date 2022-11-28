@@ -2,10 +2,17 @@ module com.coolteam.igame {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.logging;
-    requires org.apache.commons.codec;
     requires java.sql;
+    requires mysql.connector.java;
+    requires org.apache.commons.codec;
+    requires java.desktop;
+    requires javafx.media;
 
 
     opens com.coolteam.igame to javafx.fxml;
     exports com.coolteam.igame;
+    exports com.coolteam.igame.controller;
+    opens com.coolteam.igame.controller to javafx.fxml;
+    exports com.coolteam.igame.config;
+    opens com.coolteam.igame.config to javafx.fxml;
 }
