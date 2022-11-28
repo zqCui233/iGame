@@ -59,6 +59,8 @@ public class Game extends Application {
     private final Image pq = new Image(getClass().getResourceAsStream("/images/pq.png"));
     private final Image pk = new Image(getClass().getResourceAsStream("/images/pk.png"));
     private final Image back = new Image(getClass().getResourceAsStream("/images/back.png"));
+    //规则
+    private final Image rule1 = new Image(getClass().getResourceAsStream("/images/rule1.png"));
 
     // 用来对应随机点数和图片
     private static HashMap<Integer,Image> cardset = new HashMap<Integer, Image>();
@@ -88,6 +90,9 @@ public class Game extends Application {
     private ImageView p2c5 = new ImageView();
     @FXML
     private ImageView p2c6 = new ImageView();
+    @FXML
+    private ImageView help1 = new ImageView(); //规则
+    private boolean helpdisplay = false; //规则页面是否显示
     //记录牌号，防止重复
     private static ArrayList<Integer> checkRepeat = new ArrayList<Integer>();
     //记录p2牌号，结束时p2翻牌
@@ -117,7 +122,7 @@ public class Game extends Application {
 
         Scene sc = new Scene(fx.load());
 
-        primaryStage.setTitle("Black Jack");
+        primaryStage.setTitle("Black Jack Mode 3");
         primaryStage.setScene(sc);
         primaryStage.show();
     }
@@ -159,6 +164,17 @@ public class Game extends Application {
             }else{
                 p2c6.setImage(cardset.get(num));
             }
+        }
+    }
+
+    //显示和取消help
+    public void clickHelp(){
+        if(helpdisplay){
+            help1.setImage(null);
+            helpdisplay=false;
+        }else{
+            help1.setImage(rule1);
+            helpdisplay=true;
         }
     }
 

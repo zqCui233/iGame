@@ -8,11 +8,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coolteam.igame.Game">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coolteam.igame.Game3">
     <children>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#402c25" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
-        <Ellipse fill="#281c1a" layoutX="300.0" layoutY="155.0" radiusX="349.0" radiusY="256.0" stroke="#3c3734" strokeType="INSIDE" />
-        <Ellipse fill="#007c63" layoutX="300.0" layoutY="113.0" radiusX="336.0" radiusY="266.0" stroke="#4d9e83" strokeType="INSIDE" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#43203b" height="400.0" stroke="BLACK" strokeType="INSIDE" width="600.0" />
+        <Ellipse fill="#1b1d36" layoutX="300.0" layoutY="155.0" radiusX="349.0" radiusY="256.0" stroke="#48977d" strokeType="INSIDE" />
+        <Ellipse fill="#bf557a" layoutX="300.0" layoutY="113.0" radiusX="336.0" radiusY="266.0" stroke="#47e1bf" strokeType="INSIDE" />
         <Button layoutX="161.0" layoutY="222.0" mnemonicParsing="false" onAction="#hit" prefHeight="25.0" prefWidth="70.0" text="HIT" />
         <Button layoutX="370.0" layoutY="222.0" mnemonicParsing="false" onAction="#stand" prefHeight="26.0" prefWidth="70.0" text="STAND" />
         <ImageView fx:id="p1c1" fitHeight="99.0" fitWidth="70.0" layoutX="231.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true" />
@@ -36,8 +36,8 @@
         <ImageView fx:id="p2c4" fitHeight="99.0" fitWidth="70.0" layoutX="286.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="p2c5" fitHeight="98.0" fitWidth="67.0" layoutX="303.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="p2c6" fitHeight="99.0" fitWidth="70.0" layoutX="319.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
-        <Button fx:id="go2" layoutX="20.0" layoutY="353.0" mnemonicParsing="false" onAction="#goG2" text="Change Mode" />
+        <Button fx:id="go1" layoutX="20.0" layoutY="353.0" mnemonicParsing="false" onAction="#goG1" text="Change Mode" />
         <Button layoutX="20.0" layoutY="312.0" mnemonicParsing="false" onAction="#clickHelp" prefHeight="26.0" prefWidth="52.0" text="Help" />
-        <ImageView fx:id="help1" disable="true" fitHeight="265.0" fitWidth="377.0" layoutX="113.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="help2" disable="true" fitHeight="265.0" fitWidth="378.0" layoutX="114.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </Pane>
