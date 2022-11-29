@@ -2,7 +2,8 @@
 This is the final project of CSYE6200 by Cool Team
 
 ## TODO
-- score related jobs
+- score related jobs (I plan do it after pre)
+- please delete the unnecessary code in your part
 
 ## Team members
 - Zhiqing Cui([@zqCui233](https://github.com/zqCui233))
@@ -13,3 +14,5 @@ This is the final project of CSYE6200 by Cool Team
 
 ## Usage
 - Run from Main.java
+- Use username yanglei and password 12345678
+- You can register by yourself with username less than 30 characters and password less than 100 characters

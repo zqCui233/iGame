@@ -21,7 +21,7 @@ public class RegisterDao {
             String sql = "SELECT * FROM users WHERE user_name = '%s';".formatted(userName);
             DBConnector.getInstance().connectDB(RDS_ENDPOINT, 3306, DBNAME, USERNAME, PASSWORD);
             ResultSet resultSet = DBConnector.getInstance().getStatement().executeQuery(sql);
-            if (resultSet.getRow() == 0) {
+            if (!resultSet.next()) {
                 sql = "INSERT INTO users (user_name, password) values ('%s', '%s');"
                         .formatted(userName, Tools.encryptPassword(userName, password));
                 System.out.println(sql);

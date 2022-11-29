@@ -33,14 +33,10 @@ public class LoginController {
         logger.log(Level.INFO, "username: " + login_username.getText());
         logger.log(Level.INFO, "password: " + login_password.getText());
         String name = LoginDao.verifyLogin(login_username.getText(), login_password.getText());
-        if (name.equals(NO_EXISTING_USER)) {
-            logger.log(Level.INFO, "No such user!");
-            PopUpsController popUps_Controller_failure = new PopUpsController();
-            popUps_Controller_failure.popLogFailure();
-        } else if (name.equals(WRONG_PASSWORD)) {
-            logger.log(Level.INFO, "Wrong password");
-            PopUpsController popUps_Controller_failure = new PopUpsController();
-            popUps_Controller_failure.popLogFailure();
+        System.out.println(name);
+        if (name.equals("")) {
+            logger.log(Level.INFO, "Wrong username or password");
+            PopUpsController.popLogFailure();
         } else {
             logger.log(Level.INFO, "login successful!");
             Stage primaryStage = (Stage) loginBtn.getScene().getWindow();

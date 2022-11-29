@@ -27,6 +27,7 @@ public class RegisterController {
     public void registerButtonClick() throws Exception {
         String name = RegisterDao.register(login_username.getText(), login_password.getText());
         if (name.equals("")) {
+            PopUpsController.popRegFailure();
             System.out.println("[INFO] Occupied username");
         } else {
             Stage primaryStage = (Stage) registerBtn.getScene().getWindow();

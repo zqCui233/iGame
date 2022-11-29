@@ -18,17 +18,17 @@ public class LoginDao {
         String name = "";
 
         try {
-            String sql = "SELECT * FROM users WHERE user_name = '%s';".formatted(userName);
+            password = Tools.encryptPassword(userName, password);
+            System.out.println(password);
+            String sql = "SELECT * FROM users WHERE user_name = '%s' and password = '%s';".formatted(userName, password);
             DBConnector.getInstance().connectDB(RDS_ENDPOINT, 3306, DBNAME, USERNAME, PASSWORD);
             ResultSet resultSet = DBConnector.getInstance().getStatement().executeQuery(sql);
-            if (!resultSet.next()) {
-                name = NO_EXISTING_USER;
+            System.out.println(resultSet.getRow());
+//            resultSet.next();
+//            System.out.println(resultSet);
+            if (resultSet.next()) {
+                name = userName;
             }
-            else if (!Tools.encryptPassword(userName, password).equals(resultSet.getString("password"))){
-//            else if(!password.equals(resultSet.getString("password"))) {
-                name = WRONG_PASSWORD;
-            }
-            name = userName;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
