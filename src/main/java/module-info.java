@@ -6,7 +6,7 @@ module com.coolteam.igame {
     requires mysql.connector.java;
     requires org.apache.commons.codec;
     requires java.desktop;
-    requires javafx.media;
+
 
 
     opens com.coolteam.igame to javafx.fxml;

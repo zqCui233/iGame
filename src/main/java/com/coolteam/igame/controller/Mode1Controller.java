@@ -237,6 +237,15 @@ public class Mode1Controller {
         p1c1.setImage(null); p1c2.setImage(null); p1c3.setImage(null); p1c4.setImage(null);
         p1c5.setImage(null); p1c6.setImage(null); p2c1.setImage(null); p2c2.setImage(null);
         p2c3.setImage(null); p2c4.setImage(null); p2c5.setImage(null); p2c6.setImage(null);
+        //图片hashmap，点数对应图片
+        cardset.put(0,back);
+        cardset.put(1,la); cardset.put(2,l2); cardset.put(3,l3); cardset.put(4,l4);
+        cardset.put(5,l5); cardset.put(6,l6); cardset.put(7,l7); cardset.put(8,l8);
+        cardset.put(9,l9); cardset.put(10,l10); cardset.put(11,lj); cardset.put(12,lq);
+        cardset.put(13,lk); cardset.put(14,pa); cardset.put(15,p2); cardset.put(16,p3);
+        cardset.put(17,p4); cardset.put(18,p5); cardset.put(19,p6); cardset.put(20,p7);
+        cardset.put(21,p8); cardset.put(22,p9); cardset.put(23,p10); cardset.put(24,pj);
+        cardset.put(25,pq); cardset.put(26,pk);
 
         //第一张牌
         int rnum1 = r.nextInt(26)+1;
@@ -269,8 +278,14 @@ public class Mode1Controller {
      * jump to help
      */
     public void clickHelp() throws Exception{
-
-
+        //显示和取消help
+        if(helpdisplay){
+            help1.setImage(null);
+            helpdisplay=false;
+        }else{
+            help1.setImage(rule1);
+            helpdisplay=true;
+        }
     }
 
     /**
