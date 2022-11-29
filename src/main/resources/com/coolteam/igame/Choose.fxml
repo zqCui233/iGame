@@ -23,7 +23,7 @@
       <Button mnemonicParsing="false" onAction="#gotoMode1" prefHeight="33.0" prefWidth="110.0" text="Mode 1 (Easy)" />
       <Button mnemonicParsing="false" onAction="#gotoMode2" prefHeight="34.0" prefWidth="124.0" text="Mode 2 (Midium)" />
       <Button mnemonicParsing="false" onAction="#gotoMode3" prefHeight="33.0" prefWidth="110.0" text="Mode 3 (Hard)" />
-      <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="57.0" text="Back">
+      <Button mnemonicParsing="false" onAction="#goBackMain" prefHeight="31.0" prefWidth="95.0" text="Back To Main">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin>
