@@ -14,16 +14,18 @@ public class LoginDao {
      * @param password Make sure the length is less than 100
      * @return Return the name if verified.
      */
-    public String verifyLogin(String userName, String password) {
+    public static String verifyLogin(String userName, String password) {
         String name = "";
 
         try {
-            String sql = "SELECT * FROM %s WHERE user_name = %s;".formatted(DBNAME, userName);
+            String sql = "SELECT * FROM users WHERE user_name = '%s';".formatted(userName);
             DBConnector.getInstance().connectDB(RDS_ENDPOINT, 3306, DBNAME, USERNAME, PASSWORD);
             ResultSet resultSet = DBConnector.getInstance().getStatement().executeQuery(sql);
             if (!resultSet.next()) {
                 name = NO_EXISTING_USER;
-            } else if (Tools.encryptPassword(userName, password).equals(resultSet.getString("password"))){
+            }
+            else if (!Tools.encryptPassword(userName, password).equals(resultSet.getString("password"))){
+//            else if(!password.equals(resultSet.getString("password"))) {
                 name = WRONG_PASSWORD;
             }
             name = userName;

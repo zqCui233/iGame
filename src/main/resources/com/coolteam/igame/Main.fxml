@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="235.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coolteam.igame.controller.MainController">
+   <children>
+      <Label layoutX="83.0" layoutY="26.0" prefHeight="45.0" prefWidth="203.0" text="Welcome to Cool Game">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="loginBtn" layoutX="229.0" layoutY="138.0" mnemonicParsing="false" onAction="#onLoginClick" text="Login">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="registerBtn" layoutX="70.0" layoutY="138.0" mnemonicParsing="false" onAction="#onRegisterClick" text="Register">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

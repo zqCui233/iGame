@@ -18,12 +18,13 @@ public class RegisterDao {
     public static String register(String userName, String password) {
         String name = "";
         try {
-            String sql = "SELECT * FROM %s WHERE user_name = %s;".formatted(DBNAME, userName);
+            String sql = "SELECT * FROM users WHERE user_name = '%s';".formatted(userName);
             DBConnector.getInstance().connectDB(RDS_ENDPOINT, 3306, DBNAME, USERNAME, PASSWORD);
             ResultSet resultSet = DBConnector.getInstance().getStatement().executeQuery(sql);
-            if (resultSet == null) {
-                sql = "INSERT INTO %s (user_name, password) values (%s, %s);"
-                        .formatted(DBNAME, userName, Tools.encryptPassword(userName, password));
+            if (resultSet.getRow() == 0) {
+                sql = "INSERT INTO users (user_name, password) values ('%s', '%s');"
+                        .formatted(userName, Tools.encryptPassword(userName, password));
+                System.out.println(sql);
                 DBConnector.getInstance().getStatement().execute(sql);
                 name = userName;
             }

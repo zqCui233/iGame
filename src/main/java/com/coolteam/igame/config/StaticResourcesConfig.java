@@ -8,7 +8,7 @@ public final class StaticResourcesConfig {
     public final static String MAIN_VIEW_PATH = "HomeView.fxml";
 
     public final static String RDS_ENDPOINT = "jupiter-database.cx1llbdsmoon.us-east-1.rds.amazonaws.com";
-    public final static String DBNAME = "users";
+    public final static String DBNAME = "igamedb";
     public final static String USERNAME = "admin";
     public final static String PASSWORD = "qwerasdf";
     public final static String NO_EXISTING_USER = "__NO__EXISTING__USER__";
