@@ -5,6 +5,7 @@ import com.coolteam.igame.Register_v2;
 import com.coolteam.igame.dao.LoginDao;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -23,7 +24,7 @@ public class LoginController {
     private TextField login_username;
 
     @FXML
-    private TextField login_password;
+    private PasswordField login_password;
 
     //structure to store
     public void loginButtonClick() throws Exception {

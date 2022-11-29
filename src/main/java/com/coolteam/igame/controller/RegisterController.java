@@ -4,6 +4,7 @@ import com.coolteam.igame.Login_v2;
 import com.coolteam.igame.dao.RegisterDao;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -11,7 +12,7 @@ public class RegisterController {
     @FXML
     public TextField login_username;
     @FXML
-    public TextField login_password;
+    public PasswordField login_password;
     @FXML
     public Button loginBtn;
     @FXML
