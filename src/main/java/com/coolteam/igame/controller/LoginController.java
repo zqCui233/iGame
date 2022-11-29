@@ -1,7 +1,7 @@
 package com.coolteam.igame.controller;
 
 
-import com.coolteam.igame.Register;
+import com.coolteam.igame.Register_v2;
 import com.coolteam.igame.dao.LoginDao;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -46,8 +46,8 @@ public class LoginController {
     public void gotoRegister() throws Exception {
         Stage primaryStage = (Stage) registerBtn.getScene().getWindow();
         primaryStage.close();
-        Register register = new Register();
-        register.start(primaryStage);
+        Register_v2 register = new Register_v2();
+        register.gotoRegister();
     }
 
 }

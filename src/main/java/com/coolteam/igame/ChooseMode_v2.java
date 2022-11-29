@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 public class ChooseMode_v2{
     public static Stage stage;
 
-    public void ChooseMode_v2() throws Exception{
+    public void gotoChooseMode() throws Exception{
         Stage primaryStage = new Stage();
         this.stage = primaryStage;
         FXMLLoader fx = new FXMLLoader(getClass().getResource("Choose.fxml"));

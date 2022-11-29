@@ -33,7 +33,7 @@ public class HomeController {
      */
     public void gotoChooseMode() throws Exception {
         ChooseMode_v2 modeObject = new ChooseMode_v2();
-        modeObject.ChooseMode_v2();
+        modeObject.gotoChooseMode();
     }
 
     public void gameButtonClick() throws Exception {

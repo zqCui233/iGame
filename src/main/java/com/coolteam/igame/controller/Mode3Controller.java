@@ -198,7 +198,7 @@ public class Mode3Controller {
         Stage stage = (Stage) rootLayout.getScene().getWindow();
         stage.close();
         ChooseMode_v2 gameObject = new ChooseMode_v2();
-        gameObject.ChooseMode_v2();
+        gameObject.gotoChooseMode();
     }
 
     /**
