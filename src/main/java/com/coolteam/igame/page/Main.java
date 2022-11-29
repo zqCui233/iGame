@@ -1,4 +1,4 @@
-package com.coolteam.igame;
+package com.coolteam.igame.page;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -7,12 +7,12 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class Register extends Application {
+public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception{
 //        DBConnector dbConnector = new DBConnector().getInstance();
         stage.setTitle("iGame");
-        Parent root = FXMLLoader.load(getClass().getResource("RegisterView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
         Scene scene = new Scene(root, 368, 235);
         stage.setScene(scene);
         stage.show();

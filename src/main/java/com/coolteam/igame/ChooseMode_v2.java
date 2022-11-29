@@ -42,6 +42,6 @@ public class ChooseMode_v2{
     //回到主页面，未定
     @FXML
     public void goBack() throws Exception{
-
+        
     }
 }

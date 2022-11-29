@@ -1,7 +1,7 @@
 package com.coolteam.igame.controller;
 
 
-import com.coolteam.igame.Register;
+import com.coolteam.igame.page.Register;
 import com.coolteam.igame.dao.LoginDao;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,9 +10,6 @@ import javafx.stage.Stage;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import static com.coolteam.igame.config.StaticResourcesConfig.NO_EXISTING_USER;
-import static com.coolteam.igame.config.StaticResourcesConfig.WRONG_PASSWORD;
 
 public class LoginController {
     private static final Logger logger = Logger.getLogger(LoginController.class.getName());
