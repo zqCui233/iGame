@@ -15,6 +15,6 @@ module com.coolteam.igame {
     opens com.coolteam.igame.controller to javafx.fxml;
     exports com.coolteam.igame.config;
     opens com.coolteam.igame.config to javafx.fxml;
-    exports com.coolteam.igame.page;
-    opens com.coolteam.igame.page to javafx.fxml;
+//    exports com.coolteam.igame.page;
+//    opens com.coolteam.igame.page to javafx.fxml;
 }

@@ -1,6 +1,6 @@
 package com.coolteam.igame.controller;
 
-import com.coolteam.igame.page.Login;
+import com.coolteam.igame.Login;
 import com.coolteam.igame.dao.RegisterDao;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

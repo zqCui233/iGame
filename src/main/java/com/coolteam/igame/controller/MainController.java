@@ -1,7 +1,7 @@
 package com.coolteam.igame.controller;
 
-import com.coolteam.igame.page.Login;
-import com.coolteam.igame.page.Register;
+import com.coolteam.igame.Login;
+import com.coolteam.igame.Register;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
