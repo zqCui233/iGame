@@ -1,5 +1,6 @@
 package com.coolteam.igame.controller;
 
+import com.coolteam.igame.Main;
 import com.coolteam.igame.Mode1;
 import com.coolteam.igame.Mode2;
 import com.coolteam.igame.Mode3;
@@ -39,6 +40,14 @@ public class ChooseModeController {
         stage.close();
         Mode3 gameObject = new Mode3();
         gameObject.Mode3();
+    }
+
+    @FXML
+    public void goBackMain() throws Exception{
+        Stage stage = (Stage) rootLayout.getScene().getWindow();
+        stage.close();
+        Main m = new Main();
+        m.start(stage);
     }
 
 }
