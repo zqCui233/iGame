@@ -26,7 +26,7 @@
             <Font size="20.0" />
          </font></Label>
       <Button layoutX="487.0" layoutY="353.0" mnemonicParsing="false" onAction="#restart" text="Start New Turn" />
-      <Label fx:id="score" layoutX="472.0" layoutY="155.0" prefHeight="78.0" prefWidth="114.0">
+      <Label fx:id="score" layoutX="460.0" layoutY="155.0" prefHeight="78.0" prefWidth="130.0">
          <font>
             <Font size="15.0" />
          </font></Label>
