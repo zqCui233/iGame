@@ -97,7 +97,7 @@ public class Mode1{
     //记录p2牌号，结束时p2翻牌
     private static ArrayList<Integer> flipp2 = new ArrayList<Integer>();
 
-    public void Mode1() throws Exception {
+    public void gotoMode1() throws Exception {
         Stage primaryStage = new Stage();
         this.stage = primaryStage;
         FXMLLoader fx = new FXMLLoader(getClass().getResource("GameFxml.fxml"));
