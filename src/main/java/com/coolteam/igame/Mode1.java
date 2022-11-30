@@ -1,5 +1,6 @@
 package com.coolteam.igame;
 
+import com.coolteam.igame.config.StaticResourcesConfig;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,8 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.scene.media.Media;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -97,10 +101,15 @@ public class Mode1{
     //记录p2牌号，结束时p2翻牌
     private static ArrayList<Integer> flipp2 = new ArrayList<Integer>();
 
+    private static Media m = new Media(new File(StaticResourcesConfig.d).toURI().toString());
+    public static MediaPlayer mp = new MediaPlayer(m);
+
     public void Mode1() throws Exception {
         Stage primaryStage = new Stage();
         this.stage = primaryStage;
         FXMLLoader fx = new FXMLLoader(getClass().getResource("GameFxml.fxml"));
+
+        mp.play();
 
         //图片hashmap，点数对应图片
         cardset.put(0,back);

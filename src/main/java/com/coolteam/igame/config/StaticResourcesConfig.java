@@ -14,5 +14,8 @@ public final class StaticResourcesConfig {
     public final static String NO_EXISTING_USER = "__NO__EXISTING__USER__";
     public final static String WRONG_PASSWORD = "__WRONG_PASSWORD__";
 
+    public final static String exp = "src/main/resources/music/exp-1688.wav";
+    public final static String d = "src/main/resources/music/6199.mp3";
+
 }
 
