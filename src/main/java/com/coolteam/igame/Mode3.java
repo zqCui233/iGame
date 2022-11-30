@@ -94,7 +94,7 @@ public class Mode3{
     private Button go1 = new Button(); //改变场景
 
 
-    public void Mode3() throws Exception {
+    public void gotoMode3() throws Exception {
         Stage primaryStage = new Stage();
         this.stage = primaryStage;
         FXMLLoader fx = new FXMLLoader(getClass().getResource("G3.fxml"));

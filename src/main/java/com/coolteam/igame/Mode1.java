@@ -104,7 +104,7 @@ public class Mode1{
     private static Media m = new Media(new File(StaticResourcesConfig.d).toURI().toString());
     public static MediaPlayer mp = new MediaPlayer(m);
 
-    public void Mode1() throws Exception {
+    public void gotoMode1() throws Exception {
         Stage primaryStage = new Stage();
         this.stage = primaryStage;
         FXMLLoader fx = new FXMLLoader(getClass().getResource("GameFxml.fxml"));

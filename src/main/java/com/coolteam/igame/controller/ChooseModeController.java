@@ -19,7 +19,7 @@ public class ChooseModeController {
         Stage stage = (Stage) rootLayout.getScene().getWindow();
         stage.close();
         Mode1 gameObject = new Mode1();
-        gameObject.Mode1();
+        gameObject.gotoMode1();
     }
 
     /**
@@ -29,7 +29,7 @@ public class ChooseModeController {
         Stage stage = (Stage) rootLayout.getScene().getWindow();
         stage.close();
         Mode2 gameObject = new Mode2();
-        gameObject.Mode2();
+        gameObject.gotoMode2();
     }
 
     /**
@@ -39,7 +39,7 @@ public class ChooseModeController {
         Stage stage = (Stage) rootLayout.getScene().getWindow();
         stage.close();
         Mode3 gameObject = new Mode3();
-        gameObject.Mode3();
+        gameObject.gotoMode3();
     }
 
     @FXML
