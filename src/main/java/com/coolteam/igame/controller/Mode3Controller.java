@@ -1,6 +1,7 @@
 package com.coolteam.igame.controller;
 
 import com.coolteam.igame.ChooseMode_v2;
+import com.coolteam.igame.Mode3;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -197,6 +198,7 @@ public class Mode3Controller {
     public void gotoChooseMode() throws Exception {
         Stage stage = (Stage) rootLayout.getScene().getWindow();
         stage.close();
+        Mode3.mp.stop();
         ChooseMode_v2 gameObject = new ChooseMode_v2();
         gameObject.gotoChooseMode();
     }

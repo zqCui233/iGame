@@ -103,12 +103,15 @@ public class Mode1{
 
     private static Media m = new Media(new File(StaticResourcesConfig.d).toURI().toString());
     public static MediaPlayer mp = new MediaPlayer(m);
+    private static Media m2 = new Media(new File(StaticResourcesConfig.exp).toURI().toString());
+    public static MediaPlayer ex = new MediaPlayer(m2);
 
     public void gotoMode1() throws Exception {
         Stage primaryStage = new Stage();
-        this.stage = primaryStage;
+
         FXMLLoader fx = new FXMLLoader(getClass().getResource("GameFxml.fxml"));
 
+        mp.setCycleCount(MediaPlayer.INDEFINITE);
         mp.play();
 
         //图片hashmap，点数对应图片

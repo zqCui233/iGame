@@ -190,11 +190,13 @@ public class Mode1Controller {
 
             //是否有人超过21点
             if(sumArr(player2)>21) {
+                Mode1.ex.play();
                 warnLabel.setText("P2 Explode, You Win!");
                 flipcard();
                 setScore();
                 gamekeep = false;
             }else if(sumArr(player)>21) {
+                Mode1.ex.play();
                 warnLabel.setText("You Explode, You Lose!");
                 flipcard();
                 setScore();
@@ -224,6 +226,7 @@ public class Mode1Controller {
     //朴实无华的把所有数据全初始化
     @FXML
     public void restart(){
+        Mode1.ex.stop();
         Random r = new Random();
         testvalue = r.nextInt(4)+14;
         keepturn = true;
@@ -317,6 +320,7 @@ public class Mode1Controller {
 
             //结算输赢
             if (sumArr(player2) > 21) {
+                Mode1.ex.play();
                 warnLabel.setText("P2 Explode, You Win!");
                 flipcard();
                 setScore();

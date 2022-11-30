@@ -1,5 +1,6 @@
 package com.coolteam.igame;
 
+import com.coolteam.igame.config.StaticResourcesConfig;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,8 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -88,8 +92,8 @@ public class Mode2 {
     private boolean helpdisplay = false; //规则页面是否显示
     //记录牌号，防止重复
     private static ArrayList<Integer> checkRepeat = new ArrayList<Integer>();
-    @FXML
-    private Button go3 = new Button(); //改变场景
+    private static Media m = new Media(new File(StaticResourcesConfig.d).toURI().toString());
+    public static MediaPlayer mp = new MediaPlayer(m);
 
 
     public void gotoMode2() throws Exception{
@@ -109,6 +113,9 @@ public class Mode2 {
 
         // 刚开局强制要求点new turn，因为第一局就开始游戏的话有bug，我不会解决
         gamekeep = false;
+
+        mp.setCycleCount(MediaPlayer.INDEFINITE);
+        mp.play();
 
         Scene sc2 = new Scene(fx2.load());
 
