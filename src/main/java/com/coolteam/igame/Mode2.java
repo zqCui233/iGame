@@ -92,7 +92,7 @@ public class Mode2 {
     private Button go3 = new Button(); //改变场景
 
 
-    public void Mode2() throws Exception{
+    public void gotoMode2() throws Exception{
         Stage primaryStage = new Stage();
         this.stage = primaryStage;
 
