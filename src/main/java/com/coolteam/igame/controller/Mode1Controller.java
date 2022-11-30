@@ -99,10 +99,17 @@ public class Mode1Controller {
     //记录p2牌号，结束时p2翻牌
     private static ArrayList<Integer> flipp2 = new ArrayList<Integer>();
 
+    @FXML
+    private Label tScore = new Label();
+
     //score label显示分数，用在结算时
     public void setScore(){
         score.setText("P2's score:"+sumArr(player2)
                 +"\nYour score:"+sumArr(player));
+    }
+    //显示总分
+    public void settScore(){
+        tScore.setText("Total Score: "+Mode1.getTotalScore());
     }
 
     //确定哪个位置放什么牌
@@ -195,12 +202,18 @@ public class Mode1Controller {
                 flipcard();
                 setScore();
                 gamekeep = false;
+                //加分
+                Mode1.setTotalScore(Mode1.getTotalScore()+3);
+                settScore();//显示分数
             }else if(sumArr(player)>21) {
                 Mode1.ex.play();
                 warnLabel.setText("You Explode, You Lose!");
                 flipcard();
                 setScore();
                 gamekeep = false;
+                //扣分
+                Mode1.setTotalScore(Mode1.getTotalScore()-3);
+                settScore();//显示分数
             }
         }else{
             warnLabel.setText("Please Start New Turn");
@@ -324,6 +337,9 @@ public class Mode1Controller {
                 warnLabel.setText("P2 Explode, You Win!");
                 flipcard();
                 setScore();
+                //加分
+                Mode1.setTotalScore(Mode1.getTotalScore()+3);
+                settScore();//显示分数
             } else if (sumArr(player) == sumArr(player2)) {
                 warnLabel.setText("Same Score!");
                 flipcard();
@@ -332,10 +348,16 @@ public class Mode1Controller {
                 warnLabel.setText("You Win!");
                 flipcard();
                 setScore();
+                //算分
+                Mode1.setTotalScore(Mode1.getTotalScore()+sumArr(player)-sumArr(player2));
+                settScore();//显示分数
             } else {
                 warnLabel.setText("You Lose!");
                 flipcard();
                 setScore();
+                //算分
+                Mode1.setTotalScore(Mode1.getTotalScore()+sumArr(player)-sumArr(player2));
+                settScore();//显示分数
             }
             gamekeep = false;
         }else{

@@ -106,6 +106,17 @@ public class Mode1{
     private static Media m2 = new Media(new File(StaticResourcesConfig.exp).toURI().toString());
     public static MediaPlayer ex = new MediaPlayer(m2);
 
+    public static int getTotalScore() {
+        return totalScore;
+    }
+
+    public static void setTotalScore(int totalScore) {
+        Mode1.totalScore = totalScore;
+    }
+
+    private static int totalScore=0;
+
+
     public void gotoMode1() throws Exception {
         Stage primaryStage = new Stage();
 
