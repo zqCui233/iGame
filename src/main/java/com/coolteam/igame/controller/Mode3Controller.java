@@ -1,8 +1,11 @@
 package com.coolteam.igame.controller;
 
 import com.coolteam.igame.ChooseMode_v2;
+import com.coolteam.igame.Mode1;
+import com.coolteam.igame.Mode2;
 import com.coolteam.igame.Mode3;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -10,11 +13,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.ResourceBundle;
 
-public class Mode3Controller {
+public class Mode3Controller implements Initializable {
     @FXML
     private Pane rootLayout;
 
@@ -95,6 +100,12 @@ public class Mode3Controller {
     private static ArrayList<Integer> checkRepeat = new ArrayList<Integer>();
     @FXML
     private Button go1 = new Button(); //改变场景
+
+    @FXML
+    private Label tScore = new Label();
+    public void settScore(){
+        tScore.setText("Total Score: "+Mode3.getTotalScore());
+    }
     @FXML
     public void stand() {
         //是否已经结束
@@ -121,9 +132,13 @@ public class Mode3Controller {
 
             //结算输赢
             if (finalSumArr(player2) > 21) {
+                Mode1.ex.play();
                 warnLabel.setText("P2 Explode, You Win!");
                 flipcard();
                 setFinalScore();
+                //加分
+                Mode3.setTotalScore(Mode2.getTotalScore()+3);
+                settScore();//显示分数
             } else if (finalSumArr(player) == finalSumArr(player2)) {
                 warnLabel.setText("Same Score!");
                 flipcard();
@@ -132,10 +147,16 @@ public class Mode3Controller {
                 warnLabel.setText("You Win!");
                 flipcard();
                 setFinalScore();
+                //算分
+                Mode3.setTotalScore(Mode2.getTotalScore()+sumArr(player)-sumArr(player2));
+                settScore();//显示分数
             } else {
                 warnLabel.setText("You Lose!");
                 flipcard();
                 setFinalScore();
+                //算分
+                Mode3.setTotalScore(Mode2.getTotalScore()+sumArr(player)-sumArr(player2));
+                settScore();//显示分数
             }
             gamekeep = false;
         } else {
@@ -146,6 +167,7 @@ public class Mode3Controller {
     //朴实无华的把所有数据全初始化
     @FXML
     public void restart() {
+        Mode1.ex.stop();
         Random r = new Random();
         gamekeep = true;
         cheatTimes = 2;
@@ -353,10 +375,14 @@ public class Mode3Controller {
             playerCard += 1;
             whichCard(playerCard, 1, rnum1); //更新卡片
             if (finalSumArr(player) > 21) {//检查玩家是否超过21
+                Mode1.ex.play();
                 warnLabel.setText("You Explode, You Lose!");
                 flipcard();
                 setFinalScore();
                 gamekeep = false;
+                //加分
+                Mode3.setTotalScore(Mode2.getTotalScore()-3);
+                settScore();//显示分数
             } else {//如果玩家没超过21则对手摸牌
                 int rnum2;
                 if (keepHitting()) {
@@ -367,10 +393,14 @@ public class Mode3Controller {
                     player2Card += 1;
                     whichCard(player2Card, 2, rnum2); //更新卡片
                     if (finalSumArr(player2) > 21) {//检查对手是否超过21
+                        Mode1.ex.play();
                         warnLabel.setText("P2 Explode, You Win!");
                         flipcard();
                         setFinalScore();
                         gamekeep = false;
+                        //加分
+                        Mode3.setTotalScore(Mode2.getTotalScore()+3);
+                        settScore();//显示分数
                     }
                 } else if (cheatTimes > 0) {//在这里作弊
                     rnum2 = cheat();
@@ -380,10 +410,14 @@ public class Mode3Controller {
                         player2Card += 1;
                         whichCard(player2Card, 2, rnum2); //更新卡片
                         if (finalSumArr(player2) > 21) {//检查对手是否超过21
+                            Mode1.ex.play();
                             warnLabel.setText("P2 Explode, You Win!");
                             flipcard();
                             setFinalScore();
                             gamekeep = false;
+                            //加分
+                            Mode3.setTotalScore(Mode2.getTotalScore()+3);
+                            settScore();//显示分数
                         }
                     }
                 }
@@ -396,4 +430,9 @@ public class Mode3Controller {
         }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        restart();
+        settScore();
+    }
 }

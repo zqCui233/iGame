@@ -3,6 +3,7 @@ package com.coolteam.igame.controller;
 import com.coolteam.igame.ChooseMode_v2;
 import com.coolteam.igame.Mode1;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -10,11 +11,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.ResourceBundle;
 
-public class Mode1Controller {
+public class Mode1Controller implements Initializable {
     @FXML
     private Pane rootLayout;
     @FXML
@@ -365,4 +368,9 @@ public class Mode1Controller {
         }
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        restart();
+        settScore();
+    }
 }
