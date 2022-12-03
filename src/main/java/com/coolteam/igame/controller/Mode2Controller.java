@@ -185,14 +185,14 @@ public class Mode2Controller implements Initializable {
                 flipcard();
                 setFinalScore();
                 //算分
-                Mode2.setTotalScore(Mode2.getTotalScore()+sumArr(player)-sumArr(player2));
+                Mode2.setTotalScore(Mode2.getTotalScore()+finalSumArr(player)-finalSumArr(player2));
                 settScore();//显示分数
             } else {
                 warnLabel.setText("You Lose!");
                 flipcard();
                 setFinalScore();
                 //算分
-                Mode2.setTotalScore(Mode2.getTotalScore()+sumArr(player)-sumArr(player2));
+                Mode2.setTotalScore(Mode2.getTotalScore()+finalSumArr(player)-finalSumArr(player2));
                 settScore();//显示分数
             }
             gamekeep = false;
