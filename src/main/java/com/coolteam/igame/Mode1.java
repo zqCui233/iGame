@@ -109,11 +109,9 @@ public class Mode1{
     public static int getTotalScore() {
         return totalScore;
     }
-
     public static void setTotalScore(int totalScore) {
         Mode1.totalScore = totalScore;
     }
-
     private static int totalScore=0;
 
 
