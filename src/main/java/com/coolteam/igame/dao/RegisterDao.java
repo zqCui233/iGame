@@ -17,6 +17,7 @@ public class RegisterDao {
      */
     public static String register(String userName, String password) {
         String name = "";
+        int points = 0;
         try {
             String sql = "SELECT * FROM users WHERE user_name = '%s';".formatted(userName);
             DBConnector.getInstance().connectDB(RDS_ENDPOINT, 3306, DBNAME, USERNAME, PASSWORD);
@@ -24,7 +25,9 @@ public class RegisterDao {
             if (!resultSet.next()) {
                 sql = "INSERT INTO users (user_name, password) values ('%s', '%s');"
                         .formatted(userName, Tools.encryptPassword(userName, password));
-                System.out.println(sql);
+                DBConnector.getInstance().getStatement().execute(sql);
+                sql = "INSERT INTO rankinglist (user_name, points) values ('%s', %d);"
+                        .formatted(userName, points);
                 DBConnector.getInstance().getStatement().execute(sql);
                 name = userName;
             }

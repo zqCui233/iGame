@@ -2,6 +2,7 @@ package com.coolteam.igame.controller;
 
 import com.coolteam.igame.ChooseMode_v2;
 import com.coolteam.igame.Mode1;
+import com.coolteam.igame.util.Tools;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -11,7 +12,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -111,7 +114,7 @@ public class Mode1Controller implements Initializable {
                 +"\nYour score:"+sumArr(player));
     }
     //显示总分
-    public void settScore(){
+    public void settScore() throws SQLException, IOException {
         tScore.setText("Total Score: "+Mode1.getTotalScore());
     }
 
@@ -168,8 +171,9 @@ public class Mode1Controller implements Initializable {
     }
 
     @FXML
-    public void hit() {
+    public void hit() throws SQLException, IOException {
         Random r = new Random();
+        Tools tool = new Tools();
         // 测试是否已经结束
         if(gamekeep) {
             //玩家卡
@@ -207,6 +211,7 @@ public class Mode1Controller implements Initializable {
                 gamekeep = false;
                 //加分
                 Mode1.setTotalScore(Mode1.getTotalScore()+3);
+                tool.writeIntoDB(tool.readUserName(),tool.readPreviousPoints(tool.readUserName()) + 3);
                 settScore();//显示分数
             }else if(sumArr(player)>21) {
                 Mode1.ex.play();
@@ -216,6 +221,7 @@ public class Mode1Controller implements Initializable {
                 gamekeep = false;
                 //扣分
                 Mode1.setTotalScore(Mode1.getTotalScore()-3);
+                tool.writeIntoDB(tool.readUserName(),tool.readPreviousPoints(tool.readUserName()) - 3);
                 settScore();//显示分数
             }
         }else{
@@ -317,7 +323,8 @@ public class Mode1Controller implements Initializable {
 
     }
     @FXML
-    public void stand(){
+    public void stand() throws SQLException, IOException {
+        Tools tool = new Tools();
         //是否已经结束
         if(gamekeep) {
             //玩家停止抽卡
@@ -342,6 +349,7 @@ public class Mode1Controller implements Initializable {
                 setScore();
                 //加分
                 Mode1.setTotalScore(Mode1.getTotalScore()+3);
+                tool.writeIntoDB(tool.readUserName(),tool.readPreviousPoints(tool.readUserName()) + 3);
                 settScore();//显示分数
             } else if (sumArr(player) == sumArr(player2)) {
                 warnLabel.setText("Same Score!");
@@ -371,6 +379,12 @@ public class Mode1Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         restart();
-        settScore();
+        try {
+            settScore();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

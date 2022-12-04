@@ -3,6 +3,7 @@ package com.coolteam.igame.controller;
 import com.coolteam.igame.ChooseMode_v2;
 import com.coolteam.igame.Mode1;
 import com.coolteam.igame.Mode2;
+import com.coolteam.igame.util.Tools;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -12,7 +13,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -153,7 +156,7 @@ public class Mode2Controller implements Initializable {
     }
 
     @FXML
-    public void stand() {
+    public void stand() throws IOException, SQLException {
         //是否已经结束
         if (gamekeep) {
             Random r = new Random();
@@ -175,6 +178,7 @@ public class Mode2Controller implements Initializable {
                 setFinalScore();
                 //加分
                 Mode2.setTotalScore(Mode2.getTotalScore()+3);
+                Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + 3);
                 settScore();//显示分数
             } else if (finalSumArr(player) == finalSumArr(player2)) {
                 warnLabel.setText("Same Score!");
@@ -322,7 +326,7 @@ public class Mode2Controller implements Initializable {
                 + "\nYour score: ? + " + sumArr(player));
     }
     @FXML
-    public void hit() {
+    public void hit() throws IOException, SQLException {
         Random r = new Random();
         // 测试是否已经结束
         if (gamekeep) {
@@ -338,6 +342,7 @@ public class Mode2Controller implements Initializable {
                 flipcard();
                 setFinalScore();
                 Mode2.setTotalScore(Mode2.getTotalScore()-3);
+                Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) - 3);
                 settScore();//显示分数
                 gamekeep = false;
             } else {//如果玩家没超过21则对手摸牌
@@ -355,6 +360,7 @@ public class Mode2Controller implements Initializable {
                         gamekeep = false;
                         //加分
                         Mode2.setTotalScore(Mode2.getTotalScore()+3);
+                        Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + 3);
                         settScore();//显示分数
                     }
                 }
