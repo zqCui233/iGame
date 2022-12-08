@@ -2,6 +2,7 @@ package com.coolteam.igame.controller;
 
 import com.coolteam.igame.ChooseMode_v2;
 import com.coolteam.igame.Mode1;
+import com.coolteam.igame.RankingList;
 import com.coolteam.igame.util.Tools;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -299,6 +300,11 @@ public class Mode1Controller implements Initializable {
         Mode1.mp.stop();
         ChooseMode_v2 gameObject = new ChooseMode_v2();
         gameObject.gotoChooseMode();
+    }
+
+    public void gotoRankingList() throws Exception{
+        RankingList rkl = new RankingList();
+        rkl.gotoRankingList();
     }
 
     /**

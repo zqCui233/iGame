@@ -1,5 +1,6 @@
 package com.coolteam.igame;
 
+import com.coolteam.igame.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,6 +8,12 @@ import javafx.stage.Stage;
 
 public class ChooseMode_v2{
     public static Stage stage;
+
+    public static User user;
+
+    public void setUser(User u){
+        this.user = u;
+    }
 
     public void gotoChooseMode() throws Exception{
         Stage primaryStage = new Stage();

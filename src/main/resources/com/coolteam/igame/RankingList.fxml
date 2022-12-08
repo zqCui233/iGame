@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coolteam.igame.controller.RankingListController">
+   <children>
+      <TableView fx:id="tableView" layoutX="95.0" layoutY="78.0" prefHeight="271.0" prefWidth="416.0">
+        <columns>
+          <TableColumn fx:id="username" prefWidth="207.5" text="username" />
+          <TableColumn fx:id="points" prefWidth="207.5" text="points" />
+        </columns>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </TableView>
+      <Label layoutX="236.0" layoutY="36.0" prefHeight="36.0" prefWidth="129.0" text="RankingList">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

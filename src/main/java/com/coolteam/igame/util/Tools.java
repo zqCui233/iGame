@@ -1,13 +1,11 @@
 package com.coolteam.igame.util;
 
+import com.coolteam.igame.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.*;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import static com.coolteam.igame.config.StaticResourcesConfig.*;
 
@@ -59,28 +57,20 @@ public class Tools {
         return 0;
     }
 
-    public static Map<String, Integer> getRankingList() throws SQLException {
-        String sql = "SELECT *FROM rankinglist ORDER BY points;";
+    public static User[] getRankingList() throws SQLException {
+        String sql = "SELECT *FROM rankinglist ORDER BY points DESC LIMIT 9;";
         DBConnector.getInstance().connectDB(RDS_ENDPOINT, 3306, DBNAME, USERNAME, PASSWORD);
         ResultSet resultSet = DBConnector.getInstance().getStatement().executeQuery(sql);
-        DBConnector.getInstance().closeConnection();
-        Map<String, Integer> map = new LinkedHashMap<>();
-        ResultSetMetaData rsmd = resultSet.getMetaData();
-        int count = rsmd.getColumnCount();// 获取列的数量
-        if(count < 5) {
-            for (int i = 1; i <= count; i++) {
-                String name = resultSet.getString(i);
-                Integer points = resultSet.getInt(i);
-                map.put(name, points);
-            }
+        User[] users = new User[10];
+        for(int i = 0;i < users.length;i ++){
+             users[i] = new User();
         }
-        else{
-            for (int i = 1; i <= 5; i++) {
-                String name = resultSet.getString(i);
-                Integer points = resultSet.getInt(i);
-                map.put(name, points);
-            }
+        resultSet.next();
+        for (int i = 1; i <= 9; i++) {
+            users[i].setName(resultSet.getString("user_name"));
+            users[i].setPoints(resultSet.getInt("points"));
+            resultSet.next();
         }
-        return map;
+        return users;
     }
 }
