@@ -1,9 +1,7 @@
 package com.coolteam.igame.controller;
 
-import com.coolteam.igame.ChooseMode_v2;
-import com.coolteam.igame.Mode1;
-import com.coolteam.igame.Mode2;
-import com.coolteam.igame.RankingList;
+import com.coolteam.igame.*;
+import com.coolteam.igame.util.DBConnector;
 import com.coolteam.igame.util.Tools;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -120,7 +118,9 @@ public class Mode2Controller implements Initializable {
 
     //朴实无华的把所有数据全初始化
     @FXML
-    public void restart() {
+    public void restart() throws IOException, SQLException {
+        Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + Mode3.getTotalScore());
+        DBConnector.getInstance().closeConnection();
         Mode1.ex.stop();
         Random r = new Random();
         gamekeep = true;
@@ -179,7 +179,7 @@ public class Mode2Controller implements Initializable {
                 setFinalScore();
                 //加分
                 Mode2.setTotalScore(Mode2.getTotalScore()+3);
-                Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + 3);
+                //Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + 3);
                 settScore();//显示分数
             } else if (finalSumArr(player) == finalSumArr(player2)) {
                 warnLabel.setText("Same Score!");
@@ -347,7 +347,7 @@ public class Mode2Controller implements Initializable {
                 flipcard();
                 setFinalScore();
                 Mode2.setTotalScore(Mode2.getTotalScore()-3);
-                Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) - 3);
+                //Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) - 3);
                 settScore();//显示分数
                 gamekeep = false;
             } else {//如果玩家没超过21则对手摸牌
@@ -365,7 +365,7 @@ public class Mode2Controller implements Initializable {
                         gamekeep = false;
                         //加分
                         Mode2.setTotalScore(Mode2.getTotalScore()+3);
-                        Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + 3);
+                        //Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + 3);
                         settScore();//显示分数
                     }
                 }
@@ -380,7 +380,13 @@ public class Mode2Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        restart();
+        try {
+            restart();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         settScore();
     }
 }

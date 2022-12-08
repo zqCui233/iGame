@@ -50,7 +50,6 @@ public class Tools {
         DBConnector.getInstance().connectDB(RDS_ENDPOINT, 3306, DBNAME, USERNAME, PASSWORD);
         ResultSet resultSet = DBConnector.getInstance().getStatement().executeQuery(sql);
         if(resultSet.next()){
-            DBConnector.getInstance().closeConnection();
             return  resultSet.getInt("points");
         }
         DBConnector.getInstance().closeConnection();
