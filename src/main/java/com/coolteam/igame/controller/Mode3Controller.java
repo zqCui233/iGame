@@ -140,7 +140,7 @@ public class Mode3Controller implements Initializable {
                 flipcard();
                 setFinalScore();
                 //加分
-                Mode3.setTotalScore(Mode2.getTotalScore()+3);
+                Mode3.setTotalScore(Mode3.getTotalScore()+3);
                 Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + 3);
                 settScore();//显示分数
             } else if (finalSumArr(player) == finalSumArr(player2)) {
@@ -152,14 +152,14 @@ public class Mode3Controller implements Initializable {
                 flipcard();
                 setFinalScore();
                 //算分
-                Mode3.setTotalScore(Mode2.getTotalScore()+finalSumArr(player)-finalSumArr(player2));
+                Mode3.setTotalScore(Mode3.getTotalScore()+finalSumArr(player)-finalSumArr(player2));
                 settScore();//显示分数
             } else {
                 warnLabel.setText("You Lose!");
                 flipcard();
                 setFinalScore();
                 //算分
-                Mode3.setTotalScore(Mode2.getTotalScore()+finalSumArr(player)-finalSumArr(player2));
+                Mode3.setTotalScore(Mode3.getTotalScore()+finalSumArr(player)-finalSumArr(player2));
                 settScore();//显示分数
             }
             gamekeep = false;
@@ -385,7 +385,7 @@ public class Mode3Controller implements Initializable {
                 setFinalScore();
                 gamekeep = false;
                 //加分
-                Mode3.setTotalScore(Mode2.getTotalScore()-3);
+                Mode3.setTotalScore(Mode3.getTotalScore()-3);
                 Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) - 3);
                 settScore();//显示分数
             } else {//如果玩家没超过21则对手摸牌
@@ -404,7 +404,7 @@ public class Mode3Controller implements Initializable {
                         setFinalScore();
                         gamekeep = false;
                         //加分
-                        Mode3.setTotalScore(Mode2.getTotalScore()+3);
+                        Mode3.setTotalScore(Mode3.getTotalScore()+3);
                         Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + 3);
                         settScore();//显示分数
                     }
@@ -422,7 +422,7 @@ public class Mode3Controller implements Initializable {
                             setFinalScore();
                             gamekeep = false;
                             //加分
-                            Mode3.setTotalScore(Mode2.getTotalScore()+3);
+                            Mode3.setTotalScore(Mode3.getTotalScore()+3);
                             Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + 3);
                             settScore();//显示分数
                         }
