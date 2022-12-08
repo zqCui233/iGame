@@ -173,6 +173,7 @@ public class Mode3Controller implements Initializable {
     @FXML
     public void restart() throws IOException, SQLException {
         Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + Mode3.getTotalScore());
+        System.out.println(Mode3.getTotalScore());
         DBConnector.getInstance().closeConnection();
         Mode1.ex.stop();
         Random r = new Random();

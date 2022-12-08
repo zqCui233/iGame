@@ -2,7 +2,6 @@ package com.coolteam.igame.controller;
 
 import com.coolteam.igame.ChooseMode_v2;
 import com.coolteam.igame.Mode1;
-import com.coolteam.igame.Mode3;
 import com.coolteam.igame.RankingList;
 import com.coolteam.igame.util.DBConnector;
 import com.coolteam.igame.util.Tools;
@@ -251,7 +250,8 @@ public class Mode1Controller implements Initializable {
     //朴实无华的把所有数据全初始化
     @FXML
     public void restart() throws IOException, SQLException {
-        Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + Mode3.getTotalScore());
+        Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + Mode1.getTotalScore());
+        System.out.println(Mode1.getTotalScore());
         DBConnector.getInstance().closeConnection();
         Mode1.ex.stop();
         Random r = new Random();

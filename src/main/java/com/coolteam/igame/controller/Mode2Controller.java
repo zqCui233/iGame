@@ -119,7 +119,8 @@ public class Mode2Controller implements Initializable {
     //朴实无华的把所有数据全初始化
     @FXML
     public void restart() throws IOException, SQLException {
-        Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + Mode3.getTotalScore());
+        Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + Mode2.getTotalScore());
+        System.out.println(Mode2.getTotalScore());
         DBConnector.getInstance().closeConnection();
         Mode1.ex.stop();
         Random r = new Random();
