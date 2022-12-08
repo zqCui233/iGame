@@ -1,9 +1,6 @@
 package com.coolteam.igame.controller;
 
-import com.coolteam.igame.ChooseMode_v2;
-import com.coolteam.igame.Mode1;
-import com.coolteam.igame.Mode2;
-import com.coolteam.igame.Mode3;
+import com.coolteam.igame.*;
 import com.coolteam.igame.util.Tools;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -243,13 +240,11 @@ public class Mode3Controller implements Initializable {
         }
     }
 
-    /**
-     * jump to G3
-     */
-    public void goG1() throws Exception{
-
-
+    public void gotoRankingList() throws Exception{
+        RankingList rkl = new RankingList();
+        rkl.gotoRankingList();
     }
+
     public static int getNoRep(ArrayList check) {
         Random r = new Random();
         int rnum = r.nextInt(26) + 1;

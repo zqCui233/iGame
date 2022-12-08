@@ -3,6 +3,7 @@ package com.coolteam.igame.controller;
 import com.coolteam.igame.ChooseMode_v2;
 import com.coolteam.igame.Mode1;
 import com.coolteam.igame.Mode2;
+import com.coolteam.igame.RankingList;
 import com.coolteam.igame.util.Tools;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -205,6 +206,10 @@ public class Mode2Controller implements Initializable {
         }
     }
 
+    public void gotoRankingList() throws Exception{
+        RankingList rkl = new RankingList();
+        rkl.gotoRankingList();
+    }
 
     //确定哪个位置放什么牌，index从1开始
     public void whichCard(int index, int player, int num) {
