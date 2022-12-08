@@ -6,10 +6,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="login" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coolteam.igame.controller.RegisterController">
     <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#04b088" height="235.0" stroke="BLACK" strokeType="INSIDE" width="368.0" />
         <BorderPane prefHeight="20.0" prefWidth="368.0" />
         <Label layoutX="73.0" layoutY="73.0" text="username: " />
         <Label layoutX="73.0" layoutY="122.0" text="password: " />

@@ -32,6 +32,7 @@ public class RankingListController {
         }
         username.setCellValueFactory(cellData -> cellData.getValue().getName());
         points.setCellValueFactory(cellData -> cellData.getValue().getPoints().asObject());
+        tableView.setStyle("-fx-selection-bar: red; -fx-selection-bar-non-focused: salmon;");
         tableView.setItems(cellData);
     }
 

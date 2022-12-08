@@ -6,17 +6,19 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="login" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="368.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coolteam.igame.controller.LoginController">
     <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#04b088" height="235.0" stroke="BLACK" strokeType="INSIDE" width="368.0" />
         <BorderPane prefHeight="20.0" prefWidth="368.0" />
         <Label layoutX="73.0" layoutY="73.0" text="username: " />
         <Label layoutX="73.0" layoutY="122.0" text="password: " />
         <TextField fx:id="login_username" layoutX="147.0" layoutY="69.0" promptText="username" />
         <Button fx:id="loginBtn" layoutX="219.0" layoutY="164.0" mnemonicParsing="false" onAction="#loginButtonClick" prefHeight="26.0" prefWidth="95.0" text="Login" />
         <Button fx:id="registerBtn" layoutX="73.0" layoutY="164.0" mnemonicParsing="false" onAction="#gotoRegister" prefHeight="26.0" prefWidth="81.0" text="SignUp" />
-        <Label layoutX="158.0" layoutY="32.0" prefHeight="23.0" prefWidth="52.0" text="Login">
+        <Label layoutX="163.0" layoutY="31.0" prefHeight="23.0" prefWidth="43.0" text="Login">
             <font>
                 <Font size="17.0" />
             </font>
