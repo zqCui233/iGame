@@ -142,7 +142,7 @@ public class Mode3Controller implements Initializable {
                 setFinalScore();
                 //加分
                 Mode3.setTotalScore(Mode3.getTotalScore()+3);
-                //Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + 3);
+                DbScore(3);
                 settScore();//显示分数
             } else if (finalSumArr(player) == finalSumArr(player2)) {
                 warnLabel.setText("Same Score!");
@@ -153,6 +153,7 @@ public class Mode3Controller implements Initializable {
                 flipcard();
                 setFinalScore();
                 //算分
+                DbScore(finalSumArr(player)-finalSumArr(player2));
                 Mode3.setTotalScore(Mode3.getTotalScore()+finalSumArr(player)-finalSumArr(player2));
                 settScore();//显示分数
             } else {
@@ -160,6 +161,7 @@ public class Mode3Controller implements Initializable {
                 flipcard();
                 setFinalScore();
                 //算分
+                DbScore(finalSumArr(player)-finalSumArr(player2));
                 Mode3.setTotalScore(Mode3.getTotalScore()+finalSumArr(player)-finalSumArr(player2));
                 settScore();//显示分数
             }
@@ -172,9 +174,6 @@ public class Mode3Controller implements Initializable {
     //朴实无华的把所有数据全初始化
     @FXML
     public void restart() throws IOException, SQLException {
-        Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + Mode3.getTotalScore());
-        System.out.println(Mode3.getTotalScore());
-        DBConnector.getInstance().closeConnection();
         Mode1.ex.stop();
         Random r = new Random();
         gamekeep = true;
@@ -220,6 +219,10 @@ public class Mode3Controller implements Initializable {
         //放图片
         p1c1.setImage(cardset.get(0));//双方第一张牌都是反面朝上的
         p2c1.setImage(cardset.get(0));
+    }
+    public void DbScore(int num) throws IOException, SQLException {
+        Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + num);
+        DBConnector.getInstance().closeConnection();
     }
 
     /**
@@ -388,7 +391,7 @@ public class Mode3Controller implements Initializable {
                 gamekeep = false;
                 //加分
                 Mode3.setTotalScore(Mode3.getTotalScore()-3);
-                //Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) - 3);
+                DbScore(-3);
                 settScore();//显示分数
             } else {//如果玩家没超过21则对手摸牌
                 int rnum2;
@@ -407,7 +410,7 @@ public class Mode3Controller implements Initializable {
                         gamekeep = false;
                         //加分
                         Mode3.setTotalScore(Mode3.getTotalScore()+3);
-                        //Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + 3);
+                        DbScore(3);
                         settScore();//显示分数
                     }
                 } else if (cheatTimes > 0) {//在这里作弊
@@ -425,7 +428,7 @@ public class Mode3Controller implements Initializable {
                             gamekeep = false;
                             //加分
                             Mode3.setTotalScore(Mode3.getTotalScore()+3);
-                            //Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + 3);
+                            DbScore(3);
                             settScore();//显示分数
                         }
                     }

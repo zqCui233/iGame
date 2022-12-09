@@ -119,9 +119,6 @@ public class Mode2Controller implements Initializable {
     //朴实无华的把所有数据全初始化
     @FXML
     public void restart() throws IOException, SQLException {
-        Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + Mode2.getTotalScore());
-        System.out.println(Mode2.getTotalScore());
-        DBConnector.getInstance().closeConnection();
         Mode1.ex.stop();
         Random r = new Random();
         gamekeep = true;
@@ -157,6 +154,11 @@ public class Mode2Controller implements Initializable {
         p2c1.setImage(cardset.get(0));
     }
 
+    public void DbScore(int num) throws IOException, SQLException {
+        Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + num);
+        DBConnector.getInstance().closeConnection();
+    }
+
     @FXML
     public void stand() throws IOException, SQLException {
         //是否已经结束
@@ -180,7 +182,7 @@ public class Mode2Controller implements Initializable {
                 setFinalScore();
                 //加分
                 Mode2.setTotalScore(Mode2.getTotalScore()+3);
-                //Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + 3);
+                DbScore(3);
                 settScore();//显示分数
             } else if (finalSumArr(player) == finalSumArr(player2)) {
                 warnLabel.setText("Same Score!");
@@ -191,6 +193,7 @@ public class Mode2Controller implements Initializable {
                 flipcard();
                 setFinalScore();
                 //算分
+                DbScore(finalSumArr(player)-finalSumArr(player2));
                 Mode2.setTotalScore(Mode2.getTotalScore()+finalSumArr(player)-finalSumArr(player2));
                 settScore();//显示分数
             } else {
@@ -198,6 +201,7 @@ public class Mode2Controller implements Initializable {
                 flipcard();
                 setFinalScore();
                 //算分
+                DbScore(finalSumArr(player)-finalSumArr(player2));
                 Mode2.setTotalScore(Mode2.getTotalScore()+finalSumArr(player)-finalSumArr(player2));
                 settScore();//显示分数
             }
@@ -270,13 +274,6 @@ public class Mode2Controller implements Initializable {
 
     }
 
-    /**
-     * jump to G3
-     */
-    public void goG3() throws Exception{
-
-
-    }
     //得到点数
     public static int getNum(int nums){
         //点数（大于10则算作10）
@@ -348,7 +345,7 @@ public class Mode2Controller implements Initializable {
                 flipcard();
                 setFinalScore();
                 Mode2.setTotalScore(Mode2.getTotalScore()-3);
-                //Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) - 3);
+                DbScore(-3);
                 settScore();//显示分数
                 gamekeep = false;
             } else {//如果玩家没超过21则对手摸牌
@@ -366,7 +363,7 @@ public class Mode2Controller implements Initializable {
                         gamekeep = false;
                         //加分
                         Mode2.setTotalScore(Mode2.getTotalScore()+3);
-                        //Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + 3);
+                        DbScore(3);
                         settScore();//显示分数
                     }
                 }

@@ -1,6 +1,7 @@
 package com.coolteam.igame;
 
 import com.coolteam.igame.config.StaticResourcesConfig;
+import com.coolteam.igame.util.Tools;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -117,6 +118,7 @@ public class Mode1{
 
     public void gotoMode1() throws Exception {
         Stage primaryStage = new Stage();
+        setTotalScore(Tools.readPreviousPoints(Tools.readUserName()));
 
         FXMLLoader fx = new FXMLLoader(getClass().getResource("GameFxml.fxml"));
 
@@ -142,20 +144,6 @@ public class Mode1{
         primaryStage.setScene(sc);
         primaryStage.show();
     }
-
-//    //改变场景
-//    @FXML
-//    public void goG2() throws Exception{
-//        Game2 g = new Game2();
-//        stage.close();
-//        g.start(stage); //不然stage会是null，虽然好像也可以用initializable但是我偷工减料了（
-//    }
-//    @FXML
-//    public void goBack() throws Exception{
-//        ChooseMode g = new ChooseMode();
-//        stage.close();
-//        g.start(stage); //不然stage会是null，虽然好像也可以用initializable但是我偷工减料了（
-//    }
 
     //确定哪个位置放什么牌
     public void whichCard(int index,int player,int num){

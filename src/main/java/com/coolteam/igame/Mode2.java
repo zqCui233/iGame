@@ -1,6 +1,7 @@
 package com.coolteam.igame;
 
 import com.coolteam.igame.config.StaticResourcesConfig;
+import com.coolteam.igame.util.Tools;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -108,6 +109,7 @@ public class Mode2 {
 
     public void gotoMode2() throws Exception{
         Stage primaryStage = new Stage();
+        setTotalScore(Tools.readPreviousPoints(Tools.readUserName()));
         this.stage = primaryStage;
 
         FXMLLoader fx2 = new FXMLLoader(getClass().getResource("G2.fxml"));

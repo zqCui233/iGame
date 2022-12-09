@@ -1,6 +1,6 @@
 package com.coolteam.igame.dao;
 
-import com.coolteam.igame.model.User;
+
 import com.coolteam.igame.util.DBConnector;
 import com.coolteam.igame.util.Tools;
 
@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import static com.coolteam.igame.config.StaticResourcesConfig.*;
 
 public class LoginDao {
-    private static User user;
+
     /**
      * @param userName Make sure the length is less than 30
      * @param password Make sure the length is less than 100
@@ -41,11 +41,5 @@ public class LoginDao {
         return name;
     }
 
-    public static User getUser() {
-        return user;
-    }
 
-    public static void setUser(String name) {
-        user.setName(name);
-    }
 }

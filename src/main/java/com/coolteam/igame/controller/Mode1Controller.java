@@ -213,7 +213,7 @@ public class Mode1Controller implements Initializable {
                 gamekeep = false;
                 //加分
                 Mode1.setTotalScore(Mode1.getTotalScore()+3);
-                //tool.writeIntoDB(tool.readUserName(),tool.readPreviousPoints(tool.readUserName()) + 3);
+                DbScore(3);
                 settScore();//显示分数
             }else if(sumArr(player)>21) {
                 Mode1.ex.play();
@@ -223,7 +223,7 @@ public class Mode1Controller implements Initializable {
                 gamekeep = false;
                 //扣分
                 Mode1.setTotalScore(Mode1.getTotalScore()-3);
-                //tool.writeIntoDB(tool.readUserName(),tool.readPreviousPoints(tool.readUserName()) - 3);
+                DbScore(-3);
                 settScore();//显示分数
             }
         }else{
@@ -250,9 +250,6 @@ public class Mode1Controller implements Initializable {
     //朴实无华的把所有数据全初始化
     @FXML
     public void restart() throws IOException, SQLException {
-        Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + Mode1.getTotalScore());
-        System.out.println(Mode1.getTotalScore());
-        DBConnector.getInstance().closeConnection();
         Mode1.ex.stop();
         Random r = new Random();
         testvalue = r.nextInt(4)+14;
@@ -295,6 +292,11 @@ public class Mode1Controller implements Initializable {
         p1c1.setImage(cardset.get(rnum1));
         p2c1.setImage(cardset.get(rnum2));
     }
+    public void DbScore(int num) throws IOException, SQLException {
+        Tools.writeIntoDB(Tools.readUserName(),Tools.readPreviousPoints(Tools.readUserName()) + num);
+        DBConnector.getInstance().closeConnection();
+    }
+
     /**
      * jump to ModeChoose page
      */
@@ -359,7 +361,7 @@ public class Mode1Controller implements Initializable {
                 setScore();
                 //加分
                 Mode1.setTotalScore(Mode1.getTotalScore()+3);
-                //tool.writeIntoDB(tool.readUserName(),tool.readPreviousPoints(tool.readUserName()) + 3);
+                DbScore(3);
                 settScore();//显示分数
             } else if (sumArr(player) == sumArr(player2)) {
                 warnLabel.setText("Same Score!");
@@ -370,6 +372,7 @@ public class Mode1Controller implements Initializable {
                 flipcard();
                 setScore();
                 //算分
+                DbScore(sumArr(player)-sumArr(player2));
                 Mode1.setTotalScore(Mode1.getTotalScore()+sumArr(player)-sumArr(player2));
                 settScore();//显示分数
             } else {
@@ -377,6 +380,7 @@ public class Mode1Controller implements Initializable {
                 flipcard();
                 setScore();
                 //算分
+                DbScore(sumArr(player)-sumArr(player2));
                 Mode1.setTotalScore(Mode1.getTotalScore()+sumArr(player)-sumArr(player2));
                 settScore();//显示分数
             }
