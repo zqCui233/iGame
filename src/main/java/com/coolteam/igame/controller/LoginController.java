@@ -31,6 +31,7 @@ public class LoginController {
         logger.log(Level.INFO, "username: " + login_username.getText());
         logger.log(Level.INFO, "password: " + login_password.getText());
         String name = LoginDao.verifyLogin(login_username.getText(), login_password.getText());
+        //login_username.getText()
         System.out.println(name);
         if (name.equals("")) {
             logger.log(Level.INFO, "Wrong username or password");

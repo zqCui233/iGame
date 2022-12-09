@@ -33,8 +33,7 @@ public class RegisterController {
         } else {
             Stage primaryStage = (Stage) registerBtn.getScene().getWindow();
             primaryStage.close();
-            HomeController controller = new HomeController();
-            controller.gotoChooseMode();
+            gotoLogin();
         }
     }
 }
