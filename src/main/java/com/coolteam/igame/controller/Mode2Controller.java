@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-public class Mode2Controller implements Initializable {
+public class Mode2Controller extends GameMainController implements Initializable {
     @FXML
     private Pane rootLayout;
 

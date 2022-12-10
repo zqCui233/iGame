@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-public class Mode3Controller implements Initializable {
+public class Mode3Controller extends GameMainController implements Initializable {
     @FXML
     private Pane rootLayout;
 
